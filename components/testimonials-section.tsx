@@ -5,55 +5,10 @@ import { MessageSquareQuote } from "lucide-react"
 import Image from "next/image"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { useEffect, useState, useCallback, useRef } from "react"
+import { testimonials } from "@/lib/hardcoded"
 
 export default function TestimonialsSection() {
-  const testimonials = [
-    {
-      id: 1,
-      name: "Sarah Johnson",
-      role: "CTO at TechStart",
-      image: "/placeholder.svg?height=100&width=100",
-      content:
-        "Working with Charles was a game-changer for our project. Their technical expertise and problem-solving skills helped us launch our platform ahead of schedule. The code quality was exceptional, and they were always available to answer questions.",
-      rating: 5,
-    },
-    {
-      id: 2,
-      name: "Michael Chen",
-      role: "Product Manager at InnovateCorp",
-      image: "/placeholder.svg?height=100&width=100",
-      content:
-        "Charles delivered beyond our expectations. They not only implemented all the features we requested but also suggested improvements that significantly enhanced the user experience. Their attention to detail and commitment to quality is remarkable.",
-      rating: 5,
-    },
-    {
-      id: 3,
-      name: "Emily Rodriguez",
-      role: "Founder at DesignHub",
-      image: "/placeholder.svg?height=100&width=100",
-      content:
-        "I was impressed by Charles's ability to translate our design concepts into a fully functional website. Their understanding of both design principles and technical implementation made the collaboration seamless. I would definitely work with them again.",
-      rating: 5,
-    },
-    {
-      id: 4,
-      name: "David Kim",
-      role: "Lead Developer at WebSolutions",
-      image: "/placeholder.svg?height=100&width=100",
-      content:
-        "As a fellow developer, I can attest to the quality of Charles's code. Clean, well-documented, and efficient. They're also great at knowledge sharing and mentoring junior team members. A true professional in every sense.",
-      rating: 5,
-    },
-    {
-      id: 5,
-      name: "Lisa Patel",
-      role: "Marketing Director at GrowthLabs",
-      image: "/placeholder.svg?height=100&width=100",
-      content:
-        "Charles helped us implement complex analytics tracking and optimization for our marketing campaigns. Their technical insights significantly improved our conversion rates. They explain technical concepts clearly to non-technical team members.",
-      rating: 5,
-    },
-  ]
+
 
   const [api, setApi] = useState<any>()
   const [current, setCurrent] = useState(0)
@@ -202,9 +157,8 @@ export default function TestimonialsSection() {
                   <button
                     key={index}
                     onClick={() => api?.scrollTo(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      index === current ? "bg-violet-400 w-6" : "bg-violet-400/30"
-                    }`}
+                    className={`w-2 h-2 rounded-full transition-all ${index === current ? "bg-violet-400 w-6" : "bg-violet-400/30"
+                      }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
                 ))}
@@ -212,9 +166,8 @@ export default function TestimonialsSection() {
               <CarouselNext className="relative inset-0 translate-y-0 bg-midnight-800/50 border-violet-500/20 text-violet-300 hover:bg-violet-500/10 hover:text-violet-200 hover:border-violet-400" />
               <button
                 onClick={toggleAutoPlay}
-                className={`ml-4 p-2 rounded-full transition-all ${
-                  autoPlayEnabled ? "bg-violet-500/20 text-violet-300" : "bg-midnight-800/50 text-slate-400"
-                }`}
+                className={`ml-4 p-2 rounded-full transition-all ${autoPlayEnabled ? "bg-violet-500/20 text-violet-300" : "bg-midnight-800/50 text-slate-400"
+                  }`}
                 aria-label={autoPlayEnabled ? "Pause auto-play" : "Start auto-play"}
                 title={autoPlayEnabled ? "Pause auto-play" : "Start auto-play"}
               >

@@ -2,86 +2,18 @@ import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Code, Server, Palette, Database, Globe, Cpu } from "lucide-react"
 import Animated, { AnimatedItem } from "@/components/Animated"
+import { skillCategories } from "@/lib/hardcoded"
 
 export default function SkillsSection() {
-  const skillCategories = [
-    {
-      id: "frontend",
-      name: "Frontend",
-      icon: Code,
-      skills: [
-        { name: "Angular", level: 65 },
-        { name: "Next.js", level: 70 },
-        { name: "TypeScript", level: 65 },
-        { name: "Tailwind CSS", level: 70 },
-        { name: "JavaScript", level: 65 },
-        { name: "HTML/CSS", level: 75 },
-      ],
-    },
-    {
-      id: "backend",
-      name: "Backend",
-      icon: Server,
-      skills: [
-        { name: "Express", level: 80 },
-        { name: "NestJs", level: 75 },
-        { name: "REST API", level: 90 },
-      ],
-    },
-    {
-      id: "design",
-      name: "Design",
-      icon: Palette,
-      skills: [
-        { name: "Figma", level: 55 },
-        { name: "Responsive Design", level: 90 },
-        { name: "Prototyping", level: 50 },
-      ],
-    },
-    {
-      id: "database",
-      name: "Database",
-      icon: Database,
-      skills: [
-        { name: "MongoDB", level: 85 },
-        { name: "PostgreSQL", level: 80 },
-        { name: "MySQL", level: 75 },
-        { name: "Firebase", level: 85 },
-        { name: "Appwrite", level: 70 },
-        { name: "Supabase", level: 80 },
-      ],
-    },
-    {
-      id: "deployment",
-      name: "Deployment",
-      icon: Globe,
-      skills: [
-        { name: "AWS", level: 80 },
-        { name: "Vercel", level: 95 },
-      ],
-    },
-    {
-      id: "other",
-      name: "Other",
-      icon: Cpu,
-      skills: [
-        { name: "Git", level: 90 },
-        { name: "Testing", level: 80 },
-        { name: "Agile", level: 85 },
-        { name: "Performance", level: 80 },
-        { name: "SEO", level: 75 },
-        { name: "Accessibility", level: 85 },
-      ],
-    },
-  ]
+
 
   return (
     <Animated
-    repeat
-    delay={1.5}
-    isContainer 
-    stagger
-    duration={1.5}
+      repeat
+      delay={1.5}
+      isContainer
+      stagger
+      duration={1.5}
     >
       <section id="skills" className="py-20 relative overflow-hidden">
         {/* Background elements */}
@@ -103,17 +35,15 @@ export default function SkillsSection() {
           </div>
 
           <Tabs defaultValue="frontend" className="w-full">
-            <div className="flex justify-center mb-8">
-              <TabsList className="bg-midnight-800/50 border border-violet-500/20 h-auto flex-wrap">
+            <div className="flex overflow-x-scroll justify-center ">
+              <TabsList className="bg-midnight-800/50 border border-violet-500/20 h-auto flex-nowrap oveflow-scroll w-max">
                 {skillCategories.map((category) => {
-                  const Icon = category.icon
                   return (
                     <TabsTrigger
                       key={category.id}
                       value={category.id}
                       className="data-[state=active]:bg-violet-500/20 px-4 py-2 flex items-center gap-2 text-white"
                     >
-                      <Icon className="w-4 h-4" />
                       {category.name}
                     </TabsTrigger>
                   )
@@ -125,32 +55,19 @@ export default function SkillsSection() {
               <TabsContent key={category.id} value={category.id} className="mt-0">
                 <div className="grid md:grid-cols-2 gap-8">
                   {category.skills.map((skill, i) => (
-                    <AnimatedItem  delay={0.2 * i}   key={i} className="space-y-2">
-                      <div className="flex justify-between items-center">
+                    <AnimatedItem delay={0.2 * i} key={i} className="space-y-2 border border-teal-900 rounded-lg shadow-md hover:shadow-teal-500 duration-300 ease-linear transition-all hover:shadow-sm p-3">
+                      <div className="flex justify-between items-center ">
                         <h4 className="text-white font-medium">{skill.name}</h4>
                         <span className="text-violet-300 text-sm">{skill.level}%</span>
                       </div>
                       <Progress
                         value={skill.level}
-                        className="h-2 bg-midnight-800/50"
-                        indicatorClassName="bg-gradient-to-r from-violet-500 to-purple-500"
+                        className="h-2 bg-midnight-800/50 "
                       />
                     </AnimatedItem>
                   ))}
                 </div>
 
-                <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                  {Array.from({ length: 6 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="aspect-square rounded-lg bg-midnight-800/50 border border-violet-500/20 flex items-center justify-center p-4"
-                    >
-                      <div className="w-full h-full bg-gradient-to-br from-void-900 to-midnight-900 rounded flex items-center justify-center">
-                        <div className="text-violet-300 text-4xl font-bold opacity-30">{category.name.charAt(0)}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
               </TabsContent>
             ))}
           </Tabs>

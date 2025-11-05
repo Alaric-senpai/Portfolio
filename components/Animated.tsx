@@ -29,6 +29,8 @@ type AnimatedProps = {
   isContainer?: boolean
   stagger?: boolean
 
+  id?:string
+
   // Custom variants
   variants?: Variants
 }

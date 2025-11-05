@@ -3,298 +3,334 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, X, Moon, Sun } from "lucide-react"
+import { Menu, X, Moon, Sun, Code, User, Briefcase, Mail, Star, ChevronRight } from "lucide-react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
+import { cn } from "@/lib/utils"
+import { DialogTitle } from "@radix-ui/react-dialog"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(true)
-  const [activeItem, setActiveItem] = useState("Home")
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
-
-      // Optional: Update active section based on scroll position
-      const sections = document.querySelectorAll("section[id]")
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 100
-        const sectionHeight = section.offsetHeight
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-          setActiveItem(
-            section.getAttribute("id")?.charAt(0).toUpperCase() + section.getAttribute("id")?.slice(1) || "Home",
-          )
-        }
-      })
     }
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Contact", href: "#contact" },
-  ]
-
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)
-    // In a real implementation, you would toggle the dark mode class on the html element
   }
+
+  const navItems = [
+    {
+      name: "Home",
+      href: "/",
+      icon: <Code className="w-4 h-4" />
+    },
+    {
+      name: "About",
+      href: "/about",
+      icon: <User className="w-4 h-4" />
+    },
+    {
+      name: "Skills",
+      href: "/skills",
+      icon: <Star className="w-4 h-4" />
+    },
+    {
+      name: "Projects",
+      href: "/projects",
+      icon: <Briefcase className="w-4 h-4" />
+    },
+    {
+      name: "Contact",
+      href: "/contact",
+      icon: <Mail className="w-4 h-4" />
+    },
+  ]
 
   // Animation variants
   const headerVariants = {
-    hidden: { opacity: 0, y: -20 },
+    hidden: { opacity: 0, y: -30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
-        ease: "easeOut",
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
       },
     },
   }
 
   const navItemVariants = {
-    hidden: { opacity: 0, y: -10 },
+    hidden: { opacity: 0, y: -20 },
     visible: (custom: number) => ({
       opacity: 1,
       y: 0,
       transition: {
-        delay: 0.2 + custom * 0.1,
-        duration: 0.5,
-        ease: "easeOut",
+        delay: 0.3 + custom * 0.1,
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1],
       },
     }),
   }
 
   const logoVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        delay: 0.1,
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  }
-
-  const buttonVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
-        delay: 0.6,
-        duration: 0.5,
-        ease: [0.175, 0.885, 0.32, 1.275], // Custom spring-like easing
+        delay: 0.1,
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1],
       },
     },
-    tap: {
-      scale: 0.95,
+  }
+
+  const buttonVariants = {
+    hidden: { opacity: 0, x: 20 },
+    visible: {
+      opacity: 1,
+      x: 0,
       transition: {
-        duration: 0.1,
+        delay: 0.7,
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1],
       },
     },
     hover: {
       scale: 1.05,
       transition: {
         duration: 0.2,
+        ease: "easeInOut",
       },
+    },
+    tap: {
+      scale: 0.95,
     },
   }
 
   return (
-    <motion.header
-      variants={headerVariants}
-      initial="hidden"
-      animate="visible"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "py-3 bg-midnight-900/90 backdrop-blur-lg border-b border-violet-500/20" : "py-5 bg-transparent"
-      }`}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <motion.div variants={logoVariants}>
-            <Link href="#home" className="text-white font-bold text-xl flex items-center">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-400">
-                Charles
-              </span>
-              <span className="text-white">.dev</span>
-            </Link>
-          </motion.div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
-            {navItems.map((item, index) => (
-              <motion.div
-                key={item.name}
-                custom={index}
-                variants={navItemVariants}
-                whileHover={{ y: -2 }}
-                whileTap={{ y: 0 }}
-              >
-                <Link
-                  href={item.href}
-                  className={`px-4 py-2 relative ${
-                    activeItem === item.name ? "text-white" : "text-slate-300"
-                  } hover:text-white transition-colors`}
-                  onClick={() => setActiveItem(item.name)}
-                >
-                  {item.name}
-                  {activeItem === item.name && (
-                    <motion.span
-                      layoutId="activeSection"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-violet-400 to-purple-400 mx-4"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  )}
-                </Link>
-              </motion.div>
-            ))}
-          </nav>
-
-          {/* Action Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleDarkMode}
-                className="text-slate-300 hover:text-white hover:bg-violet-500/10"
-              >
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={isDarkMode ? "sun" : "moon"}
-                    initial={{ opacity: 0, rotate: -90 }}
-                    animate={{ opacity: 1, rotate: 0 }}
-                    exit={{ opacity: 0, rotate: 90 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                  </motion.div>
-                </AnimatePresence>
-              </Button>
-            </motion.div>
-
-            <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-              <Button className="bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white border-0">
-                Hire Me
-              </Button>
-            </motion.div>
-          </div>
-
-          {/* Mobile Menu */}
-          <div className="md:hidden flex items-center">
-            <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleDarkMode}
-                className="text-slate-300 hover:text-white hover:bg-violet-500/10 mr-2"
-              >
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={isDarkMode ? "sun" : "moon"}
-                    initial={{ opacity: 0, rotate: -90 }}
-                    animate={{ opacity: 1, rotate: 0 }}
-                    exit={{ opacity: 0, rotate: 90 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                  </motion.div>
-                </AnimatePresence>
-              </Button>
-            </motion.div>
-
-            <Sheet>
-              <SheetTrigger asChild>
-                <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="text-slate-300 hover:text-white hover:bg-violet-500/10"
-                  >
-                    <Menu className="w-6 h-6" />
-                  </Button>
-                </motion.div>
-              </SheetTrigger>
-              <SheetContent className="bg-midnight-900 border-violet-500/20">
-                <div className="flex flex-col h-full">
-                  <div className="flex items-center justify-between mb-8">
-                    <Link href="#home" className="text-white font-bold text-xl flex items-center">
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-400">
-                        Charles
-                      </span>
-                      <span className="text-white">.dev</span>
-                    </Link>
-                    <SheetTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="text-slate-300 hover:text-white hover:bg-violet-500/10"
-                      >
-                        <X className="w-5 h-5" />
-                      </Button>
-                    </SheetTrigger>
+    <>
+      <motion.header
+        variants={headerVariants}
+        initial="hidden"
+        animate="visible"
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+          isScrolled
+            ? "py-3 bg-slate-900/90 backdrop-blur-xl shadow-lg"
+            : "py-6 bg-transparent"
+        )}
+      >
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between">
+            {/* Logo with animated icon */}
+            <motion.div variants={logoVariants} className="flex items-center">
+              <Link href="/" className="flex items-center space-x-2 group">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-violet-500 to-purple-500 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="relative w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center border border-violet-500/30">
+                    <Code className="w-5 h-5 text-violet-400" />
                   </div>
-
-                  <nav className="flex flex-col space-y-4">
-                    {navItems.map((item, index) => (
-                      <SheetTrigger key={item.name} asChild>
-                        <motion.div
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{
-                            opacity: 1,
-                            x: 0,
-                            transition: { delay: 0.1 * index, duration: 0.3 },
-                          }}
-                          whileHover={{ x: 5 }}
-                          whileTap={{ scale: 0.98 }}
-                        >
-                          <Link
-                            href={item.href}
-                            className={`px-4 py-2 block ${
-                              activeItem === item.name ? "text-white" : "text-slate-300"
-                            } hover:text-white transition-colors`}
-                            onClick={() => setActiveItem(item.name)}
-                          >
-                            {item.name}
-                          </Link>
-                        </motion.div>
-                      </SheetTrigger>
-                    ))}
-                  </nav>
-
-                  <motion.div
-                    className="mt-auto pt-8"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      transition: { delay: 0.5, duration: 0.4 },
-                    }}
-                  >
-                    <Button className="w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white border-0">
-                      Hire Me
-                    </Button>
-                  </motion.div>
                 </div>
-              </SheetContent>
-            </Sheet>
+                <div className="flex flex-col -space-y-1">
+                  <span className="text-xl font-bold text-white">Charles</span>
+                  <span className="text-xs text-violet-400 font-medium">Full-Stack Dev</span>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center space-x-1">
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.name}
+                  custom={index}
+                  variants={navItemVariants}
+                  whileHover={{ y: -3 }}
+                  whileTap={{ y: 0 }}
+                >
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      "relative px-4 py-3 rounded-lg flex items-center space-x-2 transition-all duration-300",
+                      pathname === item.href
+                        ? "text-white bg-violet-500/10"
+                        : "text-slate-300 hover:text-white hover:bg-slate-800/50"
+                    )}
+                  >
+                    <span>{item.icon}</span>
+                    <span>{item.name}</span>
+                    {pathname === item.href && (
+                      <motion.div
+                        layoutId="activePage"
+                        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-violet-400 rounded-full"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    )}
+                  </Link>
+                </motion.div>
+              ))}
+            </nav>
+
+            {/* Action Buttons */}
+            <div className="hidden lg:flex items-center space-x-4">
+
+
+              <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
+                <Button
+                  className="bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white border-0 shadow-lg shadow-violet-500/20 rounded-full px-6"
+                  asChild
+                >
+                  <Link href="/contact" className="flex items-center">
+                    Let's Talk
+                    <ChevronRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
+              </motion.div>
+            </div>
+
+            {/* Mobile Menu Trigger */}
+            <div className="lg:hidden flex items-center">
+              <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
+                <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+                  <DialogTitle className="sr-only">
+                    mobile nav
+                  </DialogTitle>
+                  <SheetTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="text-slate-300 hover:text-white hover:bg-violet-500/10 rounded-full"
+                    >
+                      <Menu className="w-6 h-6" />
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent
+                    side="right"
+                    className="w-[300px] sm:w-[350px] bg-slate-900 border-violet-500/20 backdrop-blur-xl"
+                  >
+                    <div className="flex flex-col h-full">
+                      {/* Mobile Menu Header */}
+                      <div className="flex items-center justify-between py-6 border-b border-slate-800">
+                        <Link
+                          href="/"
+                          className="flex items-center space-x-2"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <div className="relative">
+                            <div className="absolute inset-0 bg-gradient-to-r from-violet-500 to-purple-500 rounded-full blur-md opacity-75"></div>
+                            <div className="relative w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center border border-violet-500/30">
+                              <Code className="w-4 h-4 text-violet-400" />
+                            </div>
+                          </div>
+                          <div className="flex flex-col -space-y-1">
+                            <span className="text-lg font-bold text-white">Charles</span>
+                            <span className="text-xs text-violet-400 font-medium">Full-Stack Dev</span>
+                          </div>
+                        </Link>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="text-slate-300 hover:text-white rounded-full"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <X className="w-5 h-5" />
+                        </Button>
+                      </div>
+
+                      {/* Mobile Navigation */}
+                      <nav className="flex-1 py-6">
+                        <div className="space-y-2">
+                          {navItems.map((item, index) => (
+                            <motion.div
+                              key={item.name}
+                              initial={{ opacity: 0, x: 20 }}
+                              animate={{
+                                opacity: 1,
+                                x: 0,
+                                transition: { delay: 0.1 * index, duration: 0.3 },
+                              }}
+                            >
+                              <Link
+                                href={item.href}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className={cn(
+                                  "flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300",
+                                  pathname === item.href
+                                    ? "bg-violet-500/20 text-white border border-violet-500/30"
+                                    : "text-slate-300 hover:bg-slate-800/50"
+                                )}
+                              >
+                                <div className={cn(
+                                  "p-2 rounded-lg",
+                                  pathname === item.href
+                                    ? "bg-violet-500/20"
+                                    : "bg-slate-800/50"
+                                )}>
+                                  {item.icon}
+                                </div>
+                                <span className="font-medium">{item.name}</span>
+                                {pathname === item.href && (
+                                  <motion.div
+                                    layoutId="activeMobilePage"
+                                    className="ml-auto w-2 h-2 bg-violet-400 rounded-full"
+                                    initial={{ scale: 0 }}
+                                    animate={{ scale: 1 }}
+                                    transition={{ duration: 0.3 }}
+                                  />
+                                )}
+                              </Link>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </nav>
+
+                      {/* Mobile Menu Footer */}
+                      <div className="py-6 border-t border-slate-800 space-y-4">
+
+                        <Button
+                          className="w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white border-0 shadow-lg shadow-violet-500/20"
+                          asChild
+                        >
+                          <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
+                            Let's Talk
+                          </Link>
+                        </Button>
+                      </div>
+                    </div>
+                  </SheetContent>
+                </Sheet>
+              </motion.div>
+            </div>
           </div>
         </div>
-      </div>
-    </motion.header>
+      </motion.header>
+
+      {/* Mobile Menu Backdrop */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+    </>
   )
 }

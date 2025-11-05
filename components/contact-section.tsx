@@ -54,9 +54,9 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h3 className="text-white font-medium mb-1">Email</h3>
-                  <p className="text-slate-400">ckcharles004@gmail.com</p>
+                  <p className="text-slate-400">contact@devcharles.me</p>
                   <a
-                    href="mailto:ckcharles004@gmail.com"
+                    href="mailto:contact@devcharles.me"
                     className="text-violet-400 text-sm hover:underline mt-1 inline-block"
                   >
                     Send an email

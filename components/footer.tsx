@@ -40,10 +40,10 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               {[
-                { icon: Github, href: "#", label: "GitHub" },
-                { icon: Twitter, href: "#", label: "Twitter" },
+                { icon: Github, href: "https://github.com/Alaric-senpai", label: "GitHub" },
+                // { icon: Twitter, href: "#", label: "Twitter" },
                 { icon: Linkedin, href: "#", label: "LinkedIn" },
-                { icon: Instagram, href: "#", label: "Instagram" },
+                // { icon: Instagram, href: "#", label: "Instagram" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -62,11 +62,11 @@ export default function Footer() {
             <h3 className="text-white font-medium text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {[
-                { name: "Home", href: "#home" },
-                { name: "About", href: "#about" },
-                { name: "Projects", href: "#projects" },
-                { name: "Skills", href: "#skills" },
-                { name: "Contact", href: "#contact" },
+                { name: "Home", href: "/" },
+                { name: "About", href: "/about" },
+                { name: "Projects", href: "/projects" },
+                { name: "Skills", href: "/skills" },
+                { name: "Contact", href: "/contact" },
               ].map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="text-slate-400 hover:text-violet-300 transition-colors">
@@ -83,7 +83,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li className="text-slate-400">
                 <span className="block text-violet-300">Email:</span>
-                ckcharles004@gmail.com
+                contact@devcharles.me
               </li>
               <li className="text-slate-400">
                 <span className="block text-violet-300">Phone:</span>
@@ -104,13 +104,13 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
           <p>© {currentYear} Charles.dev. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="#" className="hover:text-violet-300 transition-colors">
+            {/* <Link href="#" className="hover:text-violet-300 transition-colors">
               Privacy Policy
             </Link>
             <Link href="#" className="hover:text-violet-300 transition-colors">
               Terms of Service
-            </Link>
-            <Link href="#" className="hover:text-violet-300 transition-colors">
+            </Link> */}
+            <Link href="sitemap.xml" className="hover:text-violet-300 transition-colors">
               Sitemap
             </Link>
           </div>
