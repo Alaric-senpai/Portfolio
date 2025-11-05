@@ -21,41 +21,41 @@ const codingApproaches = [
 
 const experienceData = [
     {
-        role: "Senior Frontend Developer",
-        company: "TechCorp Inc.",
-        period: "2021 - Present",
+        role: "Developer Attachee",
+        company: "Department of ICT, education and internship",
+        period: "Feb -May 2025",
         description:
-            "Led the frontend development team in building a SaaS platform with React and TypeScript. Improved performance by 40% and implemented CI/CD pipelines.",
+            "Carried out a three  month attachment in Makueni county government ICT department, applications development section. Got familiar with enterprise grade web app development and team work and collaboration in big projects",
         achievements: [
-            "Reduced load time by 40%",
-            "Implemented CI/CD pipelines",
-            "Led team of 5 developers"
+            // "Reduced load time by 40%",
+            // "Implemented CI/CD pipelines",
+            // "Led team of 5 developers"
         ]
     },
-    {
-        role: "Full-Stack Developer",
-        company: "WebSolutions",
-        period: "2018 - 2021",
-        description:
-            "Developed and maintained multiple client projects using Next.js, Node.js, and MongoDB. Collaborated with designers to implement responsive UI/UX.",
-        achievements: [
-            "Built 15+ client projects",
-            "Improved user engagement by 35%",
-            "Mentored 3 junior developers"
-        ]
-    },
-    {
-        role: "Junior Developer",
-        company: "StartupX",
-        period: "2016 - 2018",
-        description:
-            "Assisted in building MVPs for early-stage startups. Worked with React, Express, and PostgreSQL to create scalable applications.",
-        achievements: [
-            "Contributed to 8+ MVPs",
-            "Learned full-stack development",
-            "Gained startup experience"
-        ]
-    },
+    // {
+    //     role: "Full-Stack Developer",
+    //     company: "WebSolutions",
+    //     period: "2018 - 2021",
+    //     description:
+    //         "Developed and maintained multiple client projects using Next.js, Node.js, and MongoDB. Collaborated with designers to implement responsive UI/UX.",
+    //     achievements: [
+    //         "Built 15+ client projects",
+    //         "Improved user engagement by 35%",
+    //         "Mentored 3 junior developers"
+    //     ]
+    // },
+    // {
+    //     role: "Junior Developer",
+    //     company: "StartupX",
+    //     period: "2016 - 2018",
+    //     description:
+    //         "Assisted in building MVPs for early-stage startups. Worked with React, Express, and PostgreSQL to create scalable applications.",
+    //     achievements: [
+    //         "Contributed to 8+ MVPs",
+    //         "Learned full-stack development",
+    //         "Gained startup experience"
+    //     ]
+    // },
 ]
 
 const educationData = [
@@ -64,23 +64,24 @@ const educationData = [
         school: "Dedan Kimathi University Of Technology",
         period: "2022 - Present",
         description:
-            "Pursuing a degree in Computer Science with a focus on Web development. Maintaining a 3.8 GPA while working part-time as a developer.",
+            "Pursuing a degree in Computer Science with a focus on Web development. Maintaining  academic performance while gaining practical experience.",
         achievements: [
         ]
     },
+    
 ]
 
-const certifications = [
-    { name: "AWS Certified Developer", issuer: "Amazon Web Services", date: "2022" },
-    { name: "Google Cloud Professional", issuer: "Google Cloud", date: "2021" },
-    { name: "MongoDB Certified Developer", issuer: "MongoDB University", date: "2021" },
-    { name: "React Advanced Certification", issuer: "Meta", date: "2020" },
+const certifications: Array<any> = [
+    // { name: "AWS Certified Developer", issuer: "Amazon Web Services", date: "2024" },
+    // { name: "Google Cloud Professional", issuer: "Google Cloud", date: "2024" },
+    // { name: "MongoDB Certified Developer", issuer: "MongoDB University", date: "2023" },
+    // { name: "React Advanced Certification", issuer: "Meta", date: "2023" },
 ]
 
 const skills = [
     { name: "Frontend Development", level: 90 },
     { name: "Backend Development", level: 85 },
-    {name: "Mobile Development", level:65},
+    { name: "Mobile Development", level: 65 },
     { name: "UI/UX Design", level: 75 },
     { name: "Database Management", level: 80 },
     { name: "DevOps & Deployment", level: 70 },
@@ -331,18 +332,19 @@ export default function AboutPage() {
                                                             </div>
 
                                                             <p className="text-slate-300 mb-6 text-lg">{job.description}</p>
-
-                                                            <div>
-                                                                <h4 className="text-white font-medium mb-3">Key Achievements:</h4>
-                                                                <ul className="space-y-2">
-                                                                    {job.achievements.map((achievement, idx) => (
-                                                                        <li key={idx} className="flex items-center text-slate-300">
-                                                                            <ChevronRight className="w-4 h-4 mr-2 text-violet-400 flex-shrink-0" />
-                                                                            {achievement}
-                                                                        </li>
-                                                                    ))}
-                                                                </ul>
-                                                            </div>
+                                                            {job.achievements.length > 0 && (
+                                                                <div>
+                                                                    <h4 className="text-white font-medium mb-3">Key Achievements:</h4>
+                                                                    <ul className="space-y-2">
+                                                                        {job.achievements.map((achievement, idx) => (
+                                                                            <li key={idx} className="flex items-center text-slate-300">
+                                                                                <ChevronRight className="w-4 h-4 mr-2 text-violet-400 flex-shrink-0" />
+                                                                                {achievement}
+                                                                            </li>
+                                                                        ))}
+                                                                    </ul>
+                                                                </div>
+                                                            )}
                                                         </CardContent>
                                                     </Card>
                                                 </div>
@@ -354,92 +356,101 @@ export default function AboutPage() {
 
                             <TabsContent value="education" className="mt-10 space-y-12">
                                 {/* Education */}
-                                <motion.div
-                                    initial={{ opacity: 0, x: -30 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.5 }}
-                                    className="relative"
-                                >
-                                    {/* Timeline line */}
-                                    <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-violet-500/50 to-purple-500/50"></div>
+                                {educationData.map((education, index) => (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, x: -30 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.5, delay: index * 0.2 }}
+                                        className="relative"
+                                    >
+                                        {/* Timeline line */}
+                                        <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-violet-500/50 to-purple-500/50"></div>
 
-                                    <div className="flex items-start">
-                                        {/* Timeline dot */}
-                                        <div className="relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-violet-600 to-purple-600 border-4 border-slate-900 shadow-lg">
-                                            <GraduationCap className="w-6 h-6 text-white" />
-                                        </div>
+                                        <div className="flex items-start">
+                                            {/* Timeline dot */}
+                                            <div className="relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-violet-600 to-purple-600 border-4 border-slate-900 shadow-lg">
+                                                <GraduationCap className="w-6 h-6 text-white" />
+                                            </div>
 
-                                        {/* Content */}
-                                        <div className="ml-8 flex-1">
-                                            <Card className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border-violet-500/20 overflow-hidden shadow-xl">
-                                                <CardContent className="p-8">
-                                                    <div className="flex flex-wrap justify-between items-start mb-4">
-                                                        <div>
-                                                            <h3 className="text-2xl font-bold text-white">{educationData[0].degree}</h3>
-                                                            <div className="flex items-center text-violet-300 mt-1">
-                                                                <GraduationCap className="w-4 h-4 mr-2" />
-                                                                {educationData[0].school}
+                                            {/* Content */}
+                                            <div className="ml-8 flex-1">
+                                                <Card className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border-violet-500/20 overflow-hidden shadow-xl">
+                                                    <CardContent className="p-8">
+                                                        <div className="flex flex-wrap justify-between items-start mb-4">
+                                                            <div>
+                                                                <h3 className="text-2xl font-bold text-white">{education.degree}</h3>
+                                                                <div className="flex items-center text-violet-300 mt-1">
+                                                                    <GraduationCap className="w-4 h-4 mr-2" />
+                                                                    {education.school}
+                                                                </div>
                                                             </div>
+                                                            <span className="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-full text-sm font-medium">
+                                                                {education.period}
+                                                            </span>
                                                         </div>
-                                                        <span className="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-full text-sm font-medium">
-                                                            {educationData[0].period}
-                                                        </span>
-                                                    </div>
 
-                                                    <p className="text-slate-300 mb-6 text-lg">{educationData[0].description}</p>
+                                                        <p className="text-slate-300 mb-6 text-lg">{education.description}</p>
 
-                                                    <div>
-                                                        <h4 className="text-white font-medium mb-3">Achievements:</h4>
-                                                        <ul className="space-y-2">
-                                                            {educationData[0].achievements.map((achievement, idx) => (
-                                                                <li key={idx} className="flex items-center text-slate-300">
-                                                                    <ChevronRight className="w-4 h-4 mr-2 text-violet-400 flex-shrink-0" />
-                                                                    {achievement}
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                </CardContent>
-                                            </Card>
+                                                        {education.achievements && education.achievements.length > 0 && (
+                                                            <div>
+                                                                <h4 className="text-white font-medium mb-3">Achievements:</h4>
+                                                                <ul className="space-y-2">
+                                                                    {education.achievements.map((achievement, idx) => (
+                                                                        <li key={idx} className="flex items-center text-slate-300">
+                                                                            <ChevronRight className="w-4 h-4 mr-2 text-violet-400 flex-shrink-0" />
+                                                                            {achievement}
+                                                                        </li>
+                                                                    ))}
+                                                                </ul>
+                                                            </div>
+                                                        )}
+                                                    </CardContent>
+                                                </Card>
+                                            </div>
                                         </div>
-                                    </div>
-                                </motion.div>
+                                    </motion.div>
+                                ))}
 
                                 {/* Certifications */}
-                                <motion.div
-                                    initial={{ opacity: 0, y: 30 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.5, delay: 0.3 }}
-                                    className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border-violet-500/20 rounded-2xl p-8 shadow-xl"
-                                >
-                                    <h3 className="text-3xl font-bold text-white mb-8 flex items-center">
-                                        <Award className="w-8 h-8 mr-3 text-violet-400" />
-                                        Certifications
-                                    </h3>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        {certifications.map((cert, i) => (
-                                            <motion.div
-                                                key={i}
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 0.5, delay: 0.1 * i }}
-                                                whileHover={{ y: -5 }}
-                                                className="bg-slate-800/30 border border-slate-700/50 hover:border-violet-500/30 rounded-xl p-6 transition-all duration-300"
-                                            >
-                                                <div className="flex items-start">
-                                                    <div className="p-3 rounded-lg bg-violet-500/10 text-violet-400 mr-4">
-                                                        <Award className="w-6 h-6" />
+                                {certifications.length > 0 && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 30 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.5, delay: 0.3 }}
+                                        className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border-violet-500/20 rounded-2xl p-8 shadow-xl"
+                                    >
+                                        <h3 className="text-3xl font-bold text-white mb-8 flex items-center">
+                                            <Award className="w-8 h-8 mr-3 text-violet-400" />
+                                            Certifications
+                                        </h3>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            {certifications.map((cert, i) => (
+                                                <motion.div
+                                                    key={i}
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ duration: 0.5, delay: 0.1 * i }}
+                                                    whileHover={{ y: -5 }}
+                                                    className="bg-slate-800/30 border border-slate-700/50 hover:border-violet-500/30 rounded-xl p-6 transition-all duration-300"
+                                                >
+                                                    <div className="flex items-start">
+                                                        <div className="p-3 rounded-lg bg-violet-500/10 text-violet-400 mr-4">
+                                                            <Award className="w-6 h-6" />
+                                                        </div>
+                                                        <div>
+                                                            <h4 className="text-white font-bold text-lg mb-1">{cert.name}</h4>
+                                                            <p className="text-slate-400 text-sm">{cert.issuer}</p>
+                                                            <p className="text-violet-300 text-sm mt-2">{cert.date}</p>
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        <h4 className="text-white font-bold text-lg mb-1">{cert.name}</h4>
-                                                        <p className="text-slate-400 text-sm">{cert.issuer}</p>
-                                                        <p className="text-violet-300 text-sm mt-2">{cert.date}</p>
-                                                    </div>
-                                                </div>
-                                            </motion.div>
-                                        ))}
-                                    </div>
-                                </motion.div>
+                                                </motion.div>
+                                            ))}
+                                        </div>
+                                    </motion.div>
+                                        
+                                )}
+
                             </TabsContent>
                         </Tabs>
                     </AnimatedItem>
