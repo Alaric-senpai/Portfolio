@@ -1,5 +1,14 @@
 import { Server } from "http"
 import { Code, Layout, Database, Smartphone, Sparkles, Palette, Globe, Cpu, Phone } from "lucide-react"
+import {
+    SiAngular, SiNextdotjs, SiTypescript, SiTailwindcss, SiJavascript, SiHtml5, SiCss3,
+    SiExpress, SiNestjs, SiLaravel, SiNodedotjs, SiJsonwebtokens,
+    SiFigma, SiMongodb, SiPostgresql, SiMysql, SiFirebase, SiAppwrite, SiSupabase,
+    SiAmazonwebservices, SiVercel, SiRender, SiReact, SiExpo, SiGit,
+    SiJira, SiLighthouse, SiInertia, SiPhp
+} from "react-icons/si";
+import { FaLock, FaGlobe, FaPencilRuler, FaVial, FaTasks, FaTachometerAlt, FaSearch, FaUniversalAccess } from "react-icons/fa";
+import { MdDevices } from "react-icons/md";
 
 const testimonials = [
     {
@@ -103,12 +112,12 @@ const skillCategories = [
         name: "Frontend",
         icon: Code,
         skills: [
-            { name: "Angular", level: 65 },
-            { name: "Next.js", level: 80 },
-            { name: "TypeScript", level: 65 },
-            { name: "Tailwind CSS", level: 80 },
-            { name: "JavaScript", level: 65 },
-            { name: "HTML/CSS", level: 85 },
+            { name: "Angular", icon: SiAngular },
+            { name: "Next.js", icon: SiNextdotjs },
+            { name: "TypeScript", icon: SiTypescript },
+            { name: "Tailwind CSS", icon: SiTailwindcss },
+            { name: "JavaScript", icon: SiJavascript },
+            { name: "HTML/CSS", icon: SiHtml5 },
         ],
     },
     {
@@ -116,13 +125,13 @@ const skillCategories = [
         name: "Backend",
         icon: Server,
         skills: [
-            { name: "Express", level: 80 },
-            { name: "NestJs", level: 75 },
-            { name: "REST API", level: 90 },
-            { name: "Laravel", level: 60 },
-            { name: "Authentication", level: 85 },
-            { name: "Node.js", level: 70 },
-            { name: 'JWT', level: 80 }
+            { name: "Express", icon: SiExpress },
+            { name: "NestJs", icon: SiNestjs },
+            { name: "REST API", icon: FaGlobe },
+            { name: "Laravel", icon: SiLaravel },
+            { name: "Authentication", icon: FaLock },
+            { name: "Node.js", icon: SiNodedotjs },
+            { name: 'JWT', icon: SiJsonwebtokens }
         ],
     },
     {
@@ -130,9 +139,9 @@ const skillCategories = [
         name: "Design",
         icon: Palette,
         skills: [
-            { name: "Figma", level: 55 },
-            { name: "Responsive Design", level: 90 },
-            { name: "Prototyping", level: 50 },
+            { name: "Figma", icon: SiFigma },
+            { name: "Responsive Design", icon: MdDevices },
+            { name: "Prototyping", icon: FaPencilRuler },
 
         ],
     },
@@ -141,12 +150,12 @@ const skillCategories = [
         name: "Database",
         icon: Database,
         skills: [
-            { name: "MongoDB", level: 85 },
-            { name: "PostgreSQL", level: 80 },
-            { name: "MySQL", level: 75 },
-            { name: "Firebase", level: 85 },
-            { name: "Appwrite", level: 70 },
-            { name: "Supabase", level: 80 },
+            { name: "MongoDB", icon: SiMongodb },
+            { name: "PostgreSQL", icon: SiPostgresql },
+            { name: "MySQL", icon: SiMysql },
+            { name: "Firebase", icon: SiFirebase },
+            { name: "Appwrite", icon: SiAppwrite },
+            { name: "Supabase", icon: SiSupabase },
         ],
     },
     {
@@ -154,9 +163,9 @@ const skillCategories = [
         name: "Deployment",
         icon: Globe,
         skills: [
-            { name: "AWS", level: 40 },
-            { name: "Vercel", level: 65 },
-            { name: 'Render', level: 60 }
+            { name: "AWS", icon: SiAmazonwebservices },
+            { name: "Vercel", icon: SiVercel },
+            { name: 'Render', icon: SiRender }
         ],
     },
     {
@@ -166,15 +175,15 @@ const skillCategories = [
         skills: [
             {
                 name: "React native",
-                level: 65
+                icon: SiReact
             },
             {
                 name: "Expo",
-                level: 65
+                icon: SiExpo
             },
             {
                 name: "Nativewind",
-                level: 80
+                icon: SiTailwindcss
             }
         ]
     },
@@ -183,12 +192,12 @@ const skillCategories = [
         name: "Other",
         icon: Cpu,
         skills: [
-            { name: "Git", level: 70 },
-            { name: "Testing", level: 80 },
-            { name: "Agile", level: 85 },
-            { name: "Performance", level: 80 },
-            { name: "SEO", level: 75 },
-            { name: "Accessibility", level: 85 },
+            { name: "Git", icon: SiGit },
+            { name: "Testing", icon: FaVial },
+            { name: "Agile", icon: FaTasks },
+            { name: "Performance", icon: FaTachometerAlt },
+            { name: "SEO", icon: FaSearch },
+            { name: "Accessibility", icon: FaUniversalAccess },
         ],
     }
 ]
@@ -675,7 +684,7 @@ const activeProjects: Project[] = [
             "/assets/projects/smanime-3.png"
         ],
         inDevelopment: true,
-        rebranding:true,
+        rebranding: true,
         status: "Active"
     },
     {
@@ -693,7 +702,7 @@ const activeProjects: Project[] = [
             "/assets/projects/hueforge-1.png",
             "/assets/projects/hueforge-2.png",
             "/assets/projects/hueforge-3.png"
-            
+
         ],
         inDevelopment: false,
         rebranding: false,
@@ -1062,7 +1071,7 @@ export const projects = activeProjects
 
 
 export const personalLinks = {
-    github:"https://github.com/Alaric-senpai",
-    linkedin:"https://www.linkedin.com/in/kahuho-charles-86675e",
-    twitter:"https://x.com/Alaric_kagenou"
+    github: "https://github.com/Alaric-senpai",
+    linkedin: "https://www.linkedin.com/in/kahuho-charles-86675e",
+    twitter: "https://x.com/Alaric_kagenou"
 }

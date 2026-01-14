@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "https://devcharles.me/profile.ppg",
+        url: "https://devcharles.me/profile.png",
         width: 1200,
         height: 630,
         alt: "DevCharles Portfolio Preview",
@@ -83,8 +83,29 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-void-900 via-midnight-900 to-shadow-900 `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Charles Kahuho",
+              url: "https://devcharles.me",
+              jobTitle: "Full-Stack Developer",
+              sameAs: [
+                "https://github.com/alaric-senpai",
+                "https://linkedin.com/in/charles-kahuho", 
+                "https://twitter.com/devcharles"
+              ],
+              worksFor: {
+                "@type": "Organization",
+                name: "Freelance"
+              }
+            }),
+          }}
+        />
       <Header />
         {children}
         <Footer />

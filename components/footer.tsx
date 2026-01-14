@@ -1,54 +1,49 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Github, Twitter, Linkedin, Instagram, ArrowUp } from "lucide-react"
+import { Button } from "@/components/retroui/Button" // Use RetroUI Button
+import { Github, Linkedin, ArrowUp } from "lucide-react"
 import Link from "next/link"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="relative bg-gradient-to-b from-void-900 to-midnight-900 border-t border-violet-500/10 pt-16 pb-8">
-      {/* Background elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-violet-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
-      </div>
-
+    <footer className="relative bg-background border-t-2 border-black pt-16 pb-8">
+      
       {/* Scroll to top button */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <Button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           size="icon"
-          className="rounded-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white border-0 w-12 h-12"
+          className="rounded-full w-12 h-12 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
         >
-          <ArrowUp className="w-5 h-5" />
+          <ArrowUp className="w-6 h-6" />
         </Button>
       </div>
 
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
+        <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* About */}
-          <div className="md:col-span-2">
-            <Link href="#home" className="text-white font-bold text-xl flex items-center mb-4">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-400">Charles</span>
-              <span className="text-white">.dev</span>
+          <div className="md:col-span-2 space-y-4">
+            <Link href="#home" className="flex items-center space-x-2 group w-fit">
+               <div className="w-8 h-8 bg-primary border border-black rounded flex items-center justify-center">
+                    <span className="font-bold text-primary-foreground">C</span>
+               </div>
+              <span className="text-xl font-black tracking-tight text-foreground">Charles.dev</span>
             </Link>
-            <p className="text-slate-400 mb-6 max-w-md">
+            <p className="text-muted-foreground max-w-sm leading-relaxed">
               Full-stack developer specializing in building exceptional digital experiences. Currently focused on
               building accessible, human-centered products.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-3 pt-2">
               {[
                 { icon: Github, href: "https://github.com/Alaric-senpai", label: "GitHub" },
-                // { icon: Twitter, href: "#", label: "Twitter" },
                 { icon: Linkedin, href: "#", label: "LinkedIn" },
-                // { icon: Instagram, href: "#", label: "Instagram" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
-                  className="p-2 bg-midnight-800/50 border border-violet-500/20 rounded-lg text-violet-300 hover:bg-violet-500/10 hover:border-violet-400 hover:text-violet-200 transition-all duration-300"
+                  className="p-2 bg-secondary border border-black rounded-md text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
                   aria-label={label}
                 >
                   <Icon className="w-5 h-5" />
@@ -59,8 +54,8 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white font-medium text-lg mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+            <h3 className="text-foreground font-bold text-lg mb-4 uppercase tracking-wider">Quick Links</h3>
+            <ul className="space-y-3">
               {[
                 { name: "Home", href: "/" },
                 { name: "About", href: "/about" },
@@ -69,7 +64,7 @@ export default function Footer() {
                 { name: "Contact", href: "/contact" },
               ].map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-slate-400 hover:text-violet-300 transition-colors">
+                  <Link href={link.href} className="text-muted-foreground hover:text-primary font-medium hover:underline decoration-2 transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -79,18 +74,18 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-white font-medium text-lg mb-4">Contact</h3>
-            <ul className="space-y-2">
-              <li className="text-slate-400">
-                <span className="block text-violet-300">Email:</span>
+            <h3 className="text-foreground font-bold text-lg mb-4 uppercase tracking-wider">Contact</h3>
+            <ul className="space-y-3">
+              <li className="text-muted-foreground">
+                <span className="block text-foreground font-semibold">Email:</span>
                 contact@devcharles.me
               </li>
-              <li className="text-slate-400">
-                <span className="block text-violet-300">Phone:</span>
+              <li className="text-muted-foreground">
+                <span className="block text-foreground font-semibold">Phone:</span>
                 +254 797810469
               </li>
-              <li className="text-slate-400">
-                <span className="block text-violet-300">Location:</span>
+              <li className="text-muted-foreground">
+                <span className="block text-foreground font-semibold">Location:</span>
                 Nyeri, KE
               </li>
             </ul>
@@ -98,19 +93,13 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent mb-8"></div>
+        <div className="h-px bg-black/10 mb-8"></div>
 
         {/* Bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
+        <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground font-medium">
           <p>© {currentYear} Charles.dev. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            {/* <Link href="#" className="hover:text-violet-300 transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="hover:text-violet-300 transition-colors">
-              Terms of Service
-            </Link> */}
-            <Link href="/sitemap.xml" className="hover:text-violet-300 transition-colors">
+            <Link href="/sitemap.xml" className="hover:text-primary transition-colors hover:underline">
               Sitemap
             </Link>
           </div>

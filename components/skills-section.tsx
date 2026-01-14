@@ -1,4 +1,4 @@
-import { Progress } from "@/components/ui/progress"
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Code, Server, Palette, Database, Globe, Cpu } from "lucide-react"
 import Animated, { AnimatedItem } from "@/components/Animated"
@@ -53,19 +53,22 @@ export default function SkillsSection() {
 
             {skillCategories.map((category) => (
               <TabsContent key={category.id} value={category.id} className="mt-0">
-                <div className="grid md:grid-cols-2 gap-8">
-                  {category.skills.map((skill, i) => (
-                    <AnimatedItem delay={0.2 * i} key={i} className="space-y-2 border border-teal-900 rounded-lg shadow-md hover:shadow-teal-500 duration-300 ease-linear transition-all hover:shadow-sm p-3">
-                      <div className="flex justify-between items-center ">
-                        <h4 className="text-white font-medium">{skill.name}</h4>
-                        <span className="text-violet-300 text-sm">{skill.level}%</span>
-                      </div>
-                      <Progress
-                        value={skill.level}
-                        className="h-2 bg-midnight-800/50 "
-                      />
-                    </AnimatedItem>
-                  ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {category.skills.map((skill, i) => {
+                    const Icon = skill.icon
+                    return (
+                      <AnimatedItem
+                        delay={0.1 * i}
+                        key={i}
+                        className="group flex items-center gap-4 p-4 rounded-xl border border-white/5 bg-white/5 hover:border-violet-500/20 hover:bg-violet-500/5 transition-all duration-300"
+                      >
+                        <div className="p-3 rounded-lg bg-violet-500/10 group-hover:bg-violet-500/20 text-violet-400 group-hover:text-violet-300 transition-colors">
+                          <Icon className="w-6 h-6" />
+                        </div>
+                        <h4 className="text-white font-medium text-lg">{skill.name}</h4>
+                      </AnimatedItem>
+                    )
+                  })}
                 </div>
 
               </TabsContent>

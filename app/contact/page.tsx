@@ -1,14 +1,12 @@
 'use client'
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/retroui/Button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Send, CheckCircle, AlertCircle, Clock } from "lucide-react"
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Clock, MessageSquare, ArrowRight } from "lucide-react"
 import Animated, { AnimatedItem } from "@/components/Animated"
 import { motion } from "framer-motion"
-import { cn } from "@/lib/utils"
 import { sendEmail } from "@/lib/mailer"
 import { FaGithub, FaLinkedin, FaTwitter, FaWhatsappSquare } from "react-icons/fa"
 import { personalLinks } from "@/lib/hardcoded"
@@ -35,12 +33,10 @@ export default function ContactPage() {
         setSubmitStatus('idle')
 
         try {
-            // Validate form data
             if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim() || !formData.message.trim()) {
                 throw new Error('Please fill in all required fields')
             }
 
-            // Send email using the mailer function
             const emailSent = await sendEmail(
                 formData.email,
                 formData.name,
@@ -65,267 +61,224 @@ export default function ContactPage() {
 
     const contactInfo = [
         {
-            icon: <Mail className="w-5 h-5" />,
+            icon: <Mail className="w-6 h-6" />,
             title: "Email",
             value: "contact@devcharles.me",
-            link: "mailto:contact@devcharles.me"
+            link: "mailto:contact@devcharles.me",
+            bg: "bg-primary"
         },
         {
-            icon: <FaWhatsappSquare className="w-5 h-5" />,
+            icon: <FaWhatsappSquare className="w-6 h-6" />,
             title: "WhatsApp",
             value: "+254 797810469",
-            link: "https://wa.me/+254797810469"
+            link: "https://wa.me/+254797810469",
+            bg: "bg-green-500"
         },
         {
-            icon: <MapPin className="w-5 h-5" />,
+            icon: <MapPin className="w-6 h-6" />,
             title: "Location",
             value: "Nyeri, Kenya",
-            link: null
+            link: null,
+            bg: "bg-secondary"
         }
     ]
 
     const socialLinks = [
-        { icon: <FaGithub className="w-5 h-5" />, href: personalLinks.github, label: "GitHub" },
-        { icon: <FaLinkedin className="w-5 h-5" />, href: personalLinks.linkedin, label: "LinkedIn" },
-        { icon: <FaTwitter className="w-5 h-5" />, href: personalLinks.twitter, label: "Twitter" }
+        { icon: <FaGithub className="w-6 h-6" />, href: personalLinks.github, label: "GitHub", color: "hover:bg-black hover:text-white" },
+        { icon: <FaLinkedin className="w-6 h-6" />, href: personalLinks.linkedin, label: "LinkedIn", color: "hover:bg-[#0077b5] hover:text-white" },
+        { icon: <FaTwitter className="w-6 h-6" />, href: personalLinks.twitter, label: "Twitter", color: "hover:bg-[#1da1f2] hover:text-white" }
     ]
 
     return (
-        <div className="min-h-screen pt-24 pb-20 relative overflow-hidden">
-            {/* Animated background */}
-            <div className="absolute inset-0 -z-10">
-                <div className="absolute top-20 left-10 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-                <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-indigo-500/5 rounded-full blur-3xl animate-pulse delay-700"></div>
-            </div>
-
+        <div className="min-h-screen pt-24 pb-20 bg-background overflow-hidden border-t-2 border-black">
             <div className="container mx-auto px-4 relative z-10">
                 {/* Page Header */}
                 <div className="max-w-4xl mx-auto text-center mb-16">
                     <Animated>
-                        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-violet-500/10 mb-8 backdrop-blur-sm border border-violet-500/20">
-                            <Mail className="w-10 h-10 text-violet-400" />
+                        <div className="inline-block px-4 py-1 bg-white border-2 border-black font-black uppercase tracking-widest text-sm mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -rotate-2">
+                             Contact
                         </div>
-                        <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                            Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-400">Touch</span>
+                        <h1 className="text-6xl md:text-8xl font-black text-foreground mb-6 uppercase tracking-tighter leading-[0.8]">
+                            Initiate <span className="text-white bg-black px-2">Protocol</span>
                         </h1>
-                        <div className="w-32 h-1.5 bg-gradient-to-r from-violet-500 to-purple-500 rounded-full mx-auto mb-8"></div>
-                        <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                            Have a project in mind or want to collaborate? I'd love to hear from you!
+                        <p className="text-xl md:text-2xl font-bold text-muted-foreground max-w-3xl mx-auto">
+                            Secure channel open. Awaiting mission parameters.
                         </p>
                     </Animated>
                 </div>
 
-                <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
+                <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20">
                     {/* Contact Form */}
                     <AnimatedItem delay={0.2}>
-                        <Card className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border-violet-500/20 overflow-hidden shadow-xl">
-                            <CardHeader className="pb-6">
-                                <CardTitle className="text-2xl text-white flex items-center">
-                                    <Send className="w-6 h-6 mr-3 text-violet-400" />
-                                    Send a Message
-                                </CardTitle>
-                                <p className="text-slate-400">
-                                    Fill out the form below and I'll get back to you as soon as possible.
-                                </p>
-                            </CardHeader>
-                            <CardContent className="p-6">
-                                <form onSubmit={handleSubmit} className="space-y-6">
-                                    <div className="grid md:grid-cols-2 gap-6">
-                                        <div className="space-y-2">
-                                            <Label htmlFor="name" className="text-slate-300">Name *</Label>
-                                            <Input
-                                                id="name"
-                                                name="name"
-                                                value={formData.name}
-                                                onChange={handleInputChange}
-                                                required
-                                                className="bg-slate-800/50 border-violet-500/20 text-white placeholder-slate-500 focus:border-violet-400"
-                                                placeholder="John Doe"
-                                            />
-                                        </div>
-                                        <div className="space-y-2">
-                                            <Label htmlFor="email" className="text-slate-300">Email *</Label>
-                                            <Input
-                                                id="email"
-                                                name="email"
-                                                type="email"
-                                                value={formData.email}
-                                                onChange={handleInputChange}
-                                                required
-                                                className="bg-slate-800/50 border-violet-500/20 text-white placeholder-slate-500 focus:border-violet-400"
-                                                placeholder="john@example.com"
-                                            />
-                                        </div>
-                                    </div>
+                         <div className="bg-white border-2 border-black p-8 md:p-10 shadow-[8px_8px_0px_0px_black] relative h-full">
+                            <div className="absolute -top-3 -left-3 bg-secondary border-2 border-black p-2 z-10">
+                                <MessageSquare className="w-8 h-8 text-black" />
+                            </div>
+                            
+                            <h3 className="text-3xl font-black uppercase mb-2">Send a Message</h3>
+                            <p className="text-muted-foreground font-bold text-sm mb-8 uppercase tracking-wide">I usually respond within 24 hours</p>
 
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div className="grid md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
-                                        <Label htmlFor="subject" className="text-slate-300">Subject *</Label>
+                                        <Label htmlFor="name" className="text-sm font-black uppercase">Name *</Label>
                                         <Input
-                                            id="subject"
-                                            name="subject"
-                                            value={formData.subject}
+                                            id="name"
+                                            name="name"
+                                            value={formData.name}
                                             onChange={handleInputChange}
                                             required
-                                            className="bg-slate-800/50 border-violet-500/20 text-white placeholder-slate-500 focus:border-violet-400"
-                                            placeholder="Project Inquiry"
+                                            className="h-12 bg-muted/30 border-2 border-black rounded-none shadow-none focus:shadow-[4px_4px_0px_0px_black] transition-all font-bold placeholder:uppercase placeholder:text-gray-400"
+                                            placeholder="John Doe"
                                         />
                                     </div>
-
                                     <div className="space-y-2">
-                                        <Label htmlFor="message" className="text-slate-300">Message *</Label>
-                                        <Textarea
-                                            id="message"
-                                            name="message"
-                                            value={formData.message}
+                                        <Label htmlFor="email" className="text-sm font-black uppercase">Email *</Label>
+                                        <Input
+                                            id="email"
+                                            name="email"
+                                            type="email"
+                                            value={formData.email}
                                             onChange={handleInputChange}
                                             required
-                                            rows={10}
-                                            className="bg-slate-800/50 border-violet-500/20 text-white placeholder-slate-500 focus:border-violet-400 resize-none"
-                                            placeholder="Tell me about your project..."
+                                            className="h-12 bg-muted/30 border-2 border-black rounded-none shadow-none focus:shadow-[4px_4px_0px_0px_black] transition-all font-bold placeholder:uppercase placeholder:text-gray-400"
+                                            placeholder="john@example.com"
                                         />
                                     </div>
+                                </div>
 
-                                    <Button
-                                        type="submit"
-                                        disabled={isSubmitting}
-                                        className="w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white border-0 shadow-lg shadow-violet-500/20"
-                                    >
-                                        {isSubmitting ? (
-                                            <>
-                                                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
-                                                Sending...
-                                            </>
-                                        ) : (
-                                            <>
-                                                <Send className="w-4 h-4 mr-2" />
-                                                Send Message
-                                            </>
-                                        )}
-                                    </Button>
+                                <div className="space-y-2">
+                                    <Label htmlFor="subject" className="text-sm font-black uppercase">Subject *</Label>
+                                    <Input
+                                        id="subject"
+                                        name="subject"
+                                        value={formData.subject}
+                                        onChange={handleInputChange}
+                                        required
+                                        className="h-12 bg-muted/30 border-2 border-black rounded-none shadow-none focus:shadow-[4px_4px_0px_0px_black] transition-all font-bold placeholder:uppercase placeholder:text-gray-400"
+                                        placeholder="Project Inquiry"
+                                    />
+                                </div>
 
-                                    {submitStatus === 'success' && (
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            className="flex items-center p-4 bg-green-500/10 border border-green-500/20 rounded-lg"
-                                        >
-                                            <CheckCircle className="w-5 h-5 text-green-400 mr-3" />
-                                            <span className="text-green-400">Message sent successfully! I'll get back to you soon.</span>
-                                        </motion.div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="message" className="text-sm font-black uppercase">Message *</Label>
+                                    <Textarea
+                                        id="message"
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleInputChange}
+                                        required
+                                        rows={8}
+                                        className="bg-muted/30 border-2 border-black rounded-none shadow-none focus:shadow-[4px_4px_0px_0px_black] transition-all resize-none font-bold placeholder:uppercase placeholder:text-gray-400 p-4"
+                                        placeholder="Tell me about your project..."
+                                    />
+                                </div>
+
+                                <Button
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    className="w-full h-14 bg-black text-white hover:bg-neutral-800 border-2 border-black shadow-[6px_6px_0px_0px_#ffde00] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all font-black uppercase text-lg"
+                                >
+                                    {isSubmitting ? (
+                                        <>
+                                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-3" />
+                                            Encrypting...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Send className="w-5 h-5 mr-3" />
+                                            Execute Transmission
+                                        </>
                                     )}
+                                </Button>
 
-                                    {submitStatus === 'error' && (
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            className="flex items-center p-4 bg-red-500/10 border border-red-500/20 rounded-lg"
-                                        >
-                                            <AlertCircle className="w-5 h-5 text-red-400 mr-3" />
-                                            <span className="text-red-400">
-                                                Failed to send message. Please check your connection and try again, or contact me directly at contact@devcharles.me
-                                            </span>
-                                        </motion.div>
-                                    )}
-                                </form>
-                            </CardContent>
-                        </Card>
+                                {submitStatus === 'success' && (
+                                    <div className="flex items-center p-4 bg-green-500 text-white border-2 border-black shadow-[4px_4px_0px_0px_black]">
+                                        <CheckCircle className="w-6 h-6 mr-3" />
+                                        <span className="font-bold uppercase">Message sent successfully!</span>
+                                    </div>
+                                )}
+
+                                {submitStatus === 'error' && (
+                                    <div className="flex items-center p-4 bg-red-500 text-white border-2 border-black shadow-[4px_4px_0px_0px_black]">
+                                        <AlertCircle className="w-6 h-6 mr-3" />
+                                        <span className="font-bold uppercase">Failed to send. Try again later.</span>
+                                    </div>
+                                )}
+                            </form>
+                        </div>
                     </AnimatedItem>
 
-                    {/* Contact Information */}
-                    <AnimatedItem delay={0.4} className="space-y-8">
-                        {/* Contact Details */}
-                        <Card className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border-violet-500/20 overflow-hidden shadow-xl">
-                            <CardHeader className="pb-6">
-                                <CardTitle className="text-2xl text-white">Contact Information</CardTitle>
-                                <p className="text-slate-400">
-                                    Feel free to reach out through any of these channels.
-                                </p>
-                            </CardHeader>
-                            <CardContent className="p-6">
-                                <div className="space-y-6">
-                                    {contactInfo.map((info, index) => (
-                                        <motion.div
-                                            key={index}
-                                            whileHover={{ x: 10 }}
-                                            className="flex items-start"
-                                        >
-                                            <div className="p-3 rounded-lg bg-violet-500/10 text-violet-400 mr-4">
-                                                {info.icon}
+                    {/* Contact Information & Socials */}
+                    <div className="space-y-12">
+                         {/* Contact Details */}
+                        <div className="space-y-6">
+                             <div className="inline-block bg-white border-2 border-black px-4 py-1 font-black uppercase text-sm shadow-[4px_4px_0px_0px_black]">
+                                 Direct Channels
+                             </div>
+                             
+                            {contactInfo.map((info, index) => (
+                                <AnimatedItem key={index} delay={0.3 + index * 0.1}>
+                                    <div className="group bg-white border-2 border-black p-4 flex items-center hover:shadow-[6px_6px_0px_0px_black] hover:-translate-y-1 transition-all">
+                                        <div className={`p-4 border-2 border-black ${info.bg} text-white mr-5 shadow-[2px_2px_0px_0px_black]`}>
+                                            {info.icon}
+                                        </div>
+                                        <div>
+                                            <h3 className="font-black uppercase text-lg">{info.title}</h3>
+                                            {info.link ? (
+                                                <a href={info.link} target="_blank" className="text-muted-foreground font-bold hover:text-black hover:underline decoration-2 underline-offset-2">
+                                                    {info.value}
+                                                </a>
+                                            ) : (
+                                                <p className="text-muted-foreground font-bold">{info.value}</p>
+                                            )}
+                                        </div>
+                                        {info.link && (
+                                            <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
+                                                <ArrowRight className="w-6 h-6" />
                                             </div>
-                                            <div>
-                                                <h3 className="text-white font-medium mb-1">{info.title}</h3>
-                                                {info.link ? (
-                                                    <Link                                                 href={info.link}
-                                                        target="_blank"
-                                                        className="text-violet-300 hover:text-violet-200 transition-colors"
-                                                    >
-                                                        {info.value}
-                                                    </Link>
-                                                ) : (
-                                                    <p className="text-slate-300">{info.value}</p>
-                                                )}
-                                            </div>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </CardContent>
-                        </Card>
-
-                        {/* Response Time */}
-                        <Card className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border-violet-500/20 overflow-hidden shadow-xl">
-                            <CardContent className="p-6">
-                                <div className="flex items-start">
-                                    <div className="p-3 rounded-lg bg-violet-500/10 text-violet-400 mr-4">
-                                        <Clock className="w-5 h-5" />
+                                        )}
                                     </div>
-                                    <div>
-                                        <h3 className="text-white font-medium mb-1">Response Time</h3>
-                                        <p className="text-slate-300">
-                                            I typically respond to messages within 24-48 hours. For urgent inquiries,
-                                            please indicate so in your message.
-                                        </p>
-                                    </div>
-                                </div>
-                            </CardContent>
-                        </Card>
+                                </AnimatedItem>
+                            ))}
+                        </div>
 
                         {/* Social Links */}
-                        <Card className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border-violet-500/20 overflow-hidden shadow-xl">
-                            <CardHeader className="pb-4">
-                                <CardTitle className="text-xl text-white">Connect With Me</CardTitle>
-                            </CardHeader>
-                            <CardContent className="p-6">
-                                <div className="flex gap-4">
-                                    {socialLinks.map((social, index) => (
-                                        <motion.a
-                                            key={index}
-                                            href={social.href}
-                                            target="_blank"
-                                            whileHover={{ y: -5 }}
-                                            className="flex items-center justify-center w-12 h-12 rounded-lg bg-slate-800/50 border border-violet-500/20 text-violet-300 hover:bg-violet-500/10 hover:border-violet-400 transition-all duration-300"
-                                            aria-label={social.label}
-                                        >
-                                            {social.icon}
-                                        </motion.a>
-                                    ))}
-                                </div>
-                            </CardContent>
-                        </Card>
+                        <div className="space-y-6">
+                            <div className="inline-block bg-white border-2 border-black px-4 py-1 font-black uppercase text-sm shadow-[4px_4px_0px_0px_black]">
+                                 Social Profiles
+                             </div>
+                            
+                            <div className="flex flex-wrap gap-4">
+                                {socialLinks.map((social, index) => (
+                                    <AnimatedItem key={index} delay={0.6 + index * 0.1}>
+                                    <a
+                                        href={social.href}
+                                        target="_blank"
+                                        aria-label={social.label}
+                                        className={`flex items-center justify-center w-16 h-16 bg-white border-2 border-black shadow-[4px_4px_0px_0px_black] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200 group ${social.color}`}
+                                    >
+                                        <span className="group-hover:scale-110 transition-transform duration-200">{social.icon}</span>
+                                    </a>
+                                    </AnimatedItem>
+                                ))}
+                            </div>
+                        </div>
 
-                        {/* Availability */}
-                        <Card className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border-violet-500/20 overflow-hidden shadow-xl">
-                            <CardContent className="p-6">
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center">
-                                        <div className="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></div>
-                                        <span className="text-white font-medium">Available for Work</span>
-                                    </div>
-                                    <span className="text-slate-400 text-sm">Full-time & Freelance</span>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    </AnimatedItem>
+                         {/* Availability */}
+                        <div className="bg-black text-white border-2 border-black p-8 shadow-[8px_8px_0px_0px_#8b5cf6]">
+                             <h3 className="text-2xl font-black uppercase mb-4 flex items-center gap-3">
+                                 <Clock className="w-6 h-6" /> Availability
+                             </h3>
+                             <p className="font-medium text-lg mb-4">
+                                Bandwidth available for <span className="text-accent font-bold">Q1 2026</span> operations.
+                             </p>
+                             <div className="flex items-center gap-2">
+                                <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+                                <span className="font-bold text-green-400 uppercase tracking-wider">Online Now</span>
+                             </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

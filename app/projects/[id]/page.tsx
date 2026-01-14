@@ -19,11 +19,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     return {
-        title: `${project.title} | Alaric Senpai Portfolio`,
+        title: `${project.title} | DevCharles Portfolio`,
         description: project.description,
         keywords: [...project.tags, project.category, 'portfolio', 'web development', 'software engineering'].join(', '),
-        authors: [{ name: 'Alaric Senpai' }],
-        creator: 'Alaric Senpai',
+        authors: [{ name: 'Charles Kahuho', url: 'https://devcharles.me' }],
+        creator: 'Charles Kahuho',
         openGraph: {
             title: project.title,
             description: project.description,
@@ -37,14 +37,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
                     alt: project.title,
                 },
             ],
-            siteName: 'Alaric Senpai Portfolio',
+            siteName: 'DevCharles Portfolio',
         },
         twitter: {
             card: 'summary_large_image',
             title: project.title,
             description: project.description,
             images: [project.image],
-            // creator: '@alaricsenpai',
+            site: '@devcharles',
+            creator: '@devcharles',
         },
         alternates: {
             canonical: `https://devcharles.me/projects/${project.id}`,
@@ -74,11 +75,11 @@ export default async function ProjectDetailPage({ params }: Props) {
         description: project.description,
         url: project.demoUrl || project.githubUrl,
         applicationCategory: project.category,
-        operatingSystem: project.section.join(', '),
+        operatingSystem: 'Any',
         author: {
             '@type': 'Person',
-            name: 'Alaric Senpai',
-            url: 'https://github.com/Alaric-senpai',
+            name: 'Charles Kahuho',
+            url: 'https://devcharles.me',
         },
         dateCreated: '2024-01-01', // You can add actual dates to your project data
         keywords: project.tags.join(', '),

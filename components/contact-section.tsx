@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/retroui/Button" // Use RetroUI Button
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
@@ -25,122 +25,114 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-40 right-20 w-72 h-72 bg-violet-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
-      </div>
-
+    <section id="contact" className="py-24 bg-background border-t-2 border-black relative">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center mb-12 text-center">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-violet-500/10 mb-4">
-            <Mail className="w-6 h-6 text-violet-400" />
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Get In Touch</h2>
-          <div className="w-20 h-1.5 bg-gradient-to-r from-violet-500 to-purple-500 rounded-full mb-6"></div>
-          <p className="max-w-2xl text-slate-400">
-            Have a project in mind or want to collaborate? Feel free to reach out to me.
+        <div className="flex flex-col items-center mb-16 text-center">
+            <div className="px-4 py-1.5 bg-background border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-foreground font-black uppercase tracking-widest mb-4 rotate-1">
+                Contact
+            </div>
+          <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6 uppercase">Get In Touch</h2>
+          <p className="max-w-2xl text-muted-foreground text-lg font-medium">
+            Ready to build something extraordinary? Send me a message.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
           {/* Contact info cards */}
           <div className="lg:col-span-2 space-y-6">
-            <Card className="bg-gradient-to-br from-midnight-800/50 to-shadow-800/50 border-violet-500/20 overflow-hidden">
-              <CardContent className="p-6 flex items-start gap-4">
-                <div className="p-3 rounded-full bg-violet-500/10 text-violet-400">
-                  <Mail className="w-6 h-6" />
+            <div className="bg-card border-2 border-black p-6 rounded-md shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <div className="flex items-start gap-4">
+                    <div className="p-3 bg-secondary border-2 border-black rounded-md text-secondary-foreground">
+                        <Mail className="w-6 h-6" />
+                    </div>
+                    <div>
+                        <h3 className="text-foreground font-bold mb-1">Email</h3>
+                        <p className="text-muted-foreground text-sm mb-2">contact@devcharles.me</p>
+                        <a
+                            href="mailto:contact@devcharles.me"
+                            className="text-primary font-bold hover:underline"
+                        >
+                            Send an email
+                        </a>
+                    </div>
                 </div>
-                <div>
-                  <h3 className="text-white font-medium mb-1">Email</h3>
-                  <p className="text-slate-400">contact@devcharles.me</p>
-                  <a
-                    href="mailto:contact@devcharles.me"
-                    className="text-violet-400 text-sm hover:underline mt-1 inline-block"
-                  >
-                    Send an email
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
+            </div>
 
-            <Card className="bg-gradient-to-br from-midnight-800/50 to-shadow-800/50 border-violet-500/20 overflow-hidden">
-              <CardContent className="p-6 flex items-start gap-4">
-                <div className="p-3 rounded-full bg-violet-500/10 text-violet-400">
-                  <Phone className="w-6 h-6" />
+            <div className="bg-card border-2 border-black p-6 rounded-md shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <div className="flex items-start gap-4">
+                    <div className="p-3 bg-secondary border-2 border-black rounded-md text-secondary-foreground">
+                        <Phone className="w-6 h-6" />
+                    </div>
+                    <div>
+                        <h3 className="text-foreground font-bold mb-1">Phone</h3>
+                        <p className="text-muted-foreground text-sm mb-2">+254 797810469</p>
+                        <a href="tel:+254797810469" className="text-primary font-bold hover:underline">
+                            Call me
+                        </a>
+                    </div>
                 </div>
-                <div>
-                  <h3 className="text-white font-medium mb-1">Phone</h3>
-                  <p className="text-slate-400">+254 797810469</p>
-                  <a href="tel:+15551234567" className="text-violet-400 text-sm hover:underline mt-1 inline-block">
-                    Call me
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
+            </div>
 
-            <Card className="bg-gradient-to-br from-midnight-800/50 to-shadow-800/50 border-violet-500/20 overflow-hidden">
-              <CardContent className="p-6 flex items-start gap-4">
-                <div className="p-3 rounded-full bg-violet-500/10 text-violet-400">
-                  <MapPin className="w-6 h-6" />
+            <div className="bg-card border-2 border-black p-6 rounded-md shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <div className="flex items-start gap-4">
+                    <div className="p-3 bg-secondary border-2 border-black rounded-md text-secondary-foreground">
+                        <MapPin className="w-6 h-6" />
+                    </div>
+                    <div>
+                        <h3 className="text-foreground font-bold mb-1">Location</h3>
+                        <p className="text-muted-foreground text-sm">Nyeri, KE</p>
+                        <p className="text-green-600 font-bold text-xs mt-2 uppercase tracking-wide border border-green-600/20 bg-green-50 inline-block px-1 rounded">Remote Available</p>
+                    </div>
                 </div>
-                <div>
-                  <h3 className="text-white font-medium mb-1">Location</h3>
-                  <p className="text-slate-400">Nyeri, KE</p>
-                  <p className="text-violet-400 text-sm mt-1">Available for remote work</p>
-                </div>
-              </CardContent>
-            </Card>
+            </div>
 
-            <div className="p-6 rounded-lg bg-gradient-to-br from-violet-500/10 to-purple-500/10 border border-violet-500/20">
-              <h3 className="text-white font-medium mb-3">Availability</h3>
-              <p className="text-slate-400 mb-4">
+            <div className="p-6 bg-accent border-2 border-black rounded-md">
+              <h3 className="text-black font-bold mb-3">Availability</h3>
+              <p className="text-black/70 mb-4 text-sm">
                 Currently available for freelance projects, contract work, and full-time positions.
               </p>
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-green-400 text-sm">Available for new opportunities</span>
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse border border-black"></div>
+                <span className="text-black font-bold text-sm">Open to work</span>
               </div>
             </div>
           </div>
 
           {/* Contact form */}
           <div className="lg:col-span-3">
-            <Card className="bg-gradient-to-br from-midnight-800/50 to-shadow-800/50 border-violet-500/20 overflow-hidden">
-              <CardContent className="p-6">
+            <div className="bg-card border-2 border-black p-8 rounded-lg shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 {isSubmitted ? (
                   <div className="flex flex-col items-center justify-center py-12 text-center">
-                    <div className="w-16 h-16 bg-violet-500/20 rounded-full flex items-center justify-center mb-4">
-                      <Send className="w-8 h-8 text-violet-400" />
+                    <div className="w-16 h-16 bg-green-100 border-2 border-black rounded-full flex items-center justify-center mb-4 text-green-700">
+                      <Send className="w-8 h-8" />
                     </div>
-                    <h3 className="text-xl font-medium text-white mb-2">Message Sent!</h3>
-                    <p className="text-slate-400 mb-6">
+                    <h3 className="text-2xl font-black text-foreground mb-2">Message Sent!</h3>
+                    <p className="text-muted-foreground mb-8">
                       Thank you for reaching out. I'll get back to you as soon as possible.
                     </p>
                     <Button
                       onClick={() => setIsSubmitted(false)}
-                      className="bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white border-0"
+                      variant="outline"
                     >
                       Send Another Message
                     </Button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div className="space-y-2">
-                        <label htmlFor="name" className="text-sm font-medium text-slate-300">
+                        <label htmlFor="name" className="text-sm font-bold text-foreground">
                           Name
                         </label>
                         <Input
                           id="name"
                           placeholder="Your name"
                           required
-                          className="bg-midnight-900/50 border-violet-500/20 focus:border-violet-400 text-white"
+                          className="bg-background border-2 border-black focus-visible:ring-0 focus-visible:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
                         />
                       </div>
                       <div className="space-y-2">
-                        <label htmlFor="email" className="text-sm font-medium text-slate-300">
+                        <label htmlFor="email" className="text-sm font-bold text-foreground">
                           Email
                         </label>
                         <Input
@@ -148,23 +140,23 @@ export default function ContactSection() {
                           type="email"
                           placeholder="Your email"
                           required
-                          className="bg-midnight-900/50 border-violet-500/20 focus:border-violet-400 text-white"
+                          className="bg-background border-2 border-black focus-visible:ring-0 focus-visible:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
                         />
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="subject" className="text-sm font-medium text-slate-300">
+                      <label htmlFor="subject" className="text-sm font-bold text-foreground">
                         Subject
                       </label>
                       <Input
                         id="subject"
                         placeholder="Subject of your message"
                         required
-                        className="bg-midnight-900/50 border-violet-500/20 focus:border-violet-400 text-white"
+                        className="bg-background border-2 border-black focus-visible:ring-0 focus-visible:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="message" className="text-sm font-medium text-slate-300">
+                      <label htmlFor="message" className="text-sm font-bold text-foreground">
                         Message
                       </label>
                       <Textarea
@@ -172,13 +164,13 @@ export default function ContactSection() {
                         placeholder="Your message"
                         required
                         rows={6}
-                        className="bg-midnight-900/50 border-violet-500/20 focus:border-violet-400 text-white resize-none"
+                        className="bg-background border-2 border-black focus-visible:ring-0 focus-visible:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all resize-none"
                       />
                     </div>
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full "
+                      className="w-full"
                     >
                       {isSubmitting ? (
                         <>
@@ -194,8 +186,7 @@ export default function ContactSection() {
                     </Button>
                   </form>
                 )}
-              </CardContent>
-            </Card>
+            </div>
           </div>
         </div>
       </div>
