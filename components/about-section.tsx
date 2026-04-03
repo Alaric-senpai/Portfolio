@@ -48,7 +48,7 @@ export default function AboutSection() {
                   <div className="w-full space-y-4 mb-8 text-left font-medium">
                     <div className="flex items-center justify-between p-2 bg-accent/10 rounded border border-black/5">
                       <span className="flex items-center text-muted-foreground"><MapPin className="w-4 h-4 mr-2"/> Location</span>
-                      <span className="font-medium">Nyeri, KE</span>
+                      <span className="font-medium">Makueni, KE</span>
                     </div>
                     <div className="flex items-center justify-between p-2 bg-accent/10 rounded border border-black/5">
                       <span className="flex items-center text-muted-foreground"><Calendar className="w-4 h-4 mr-2"/> Exp.</span>
