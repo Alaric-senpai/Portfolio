@@ -78,7 +78,7 @@ export default function AboutPage() {
                                 <div className="space-y-3 font-bold text-sm">
                                     <div className="flex justify-between border-b-2 border-black/10 pb-2">
                                         <span className="text-muted-foreground uppercase">Base</span>
-                                        <span>Nyeri, KE</span>
+                                        <span>Makueni, KE</span>
                                     </div>
                                     <div className="flex justify-between border-b-2 border-black/10 pb-2">
                                         <span className="text-muted-foreground uppercase">Field Exp.</span>
