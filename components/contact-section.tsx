@@ -80,7 +80,7 @@ export default function ContactSection() {
                     </div>
                     <div>
                         <h3 className="text-foreground font-bold mb-1">Location</h3>
-                        <p className="text-muted-foreground text-sm">Nyeri, KE</p>
+                        <p className="text-muted-foreground text-sm">Makueni, KE</p>
                         <p className="text-green-600 font-bold text-xs mt-2 uppercase tracking-wide border border-green-600/20 bg-green-50 inline-block px-1 rounded">Remote Available</p>
                     </div>
                 </div>

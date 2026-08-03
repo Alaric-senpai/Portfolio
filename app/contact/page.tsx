@@ -77,7 +77,7 @@ export default function ContactPage() {
         {
             icon: <MapPin className="w-6 h-6" />,
             title: "Location",
-            value: "Nyeri, Kenya",
+            value: "Makueni County, Kenya",
             link: null,
             bg: "bg-secondary"
         }
@@ -90,18 +90,18 @@ export default function ContactPage() {
     ]
 
     return (
-        <div className="min-h-screen pt-24 pb-20 bg-background overflow-hidden border-t-2 border-black">
+        <div className="min-h-screen pt-24 pb-20 bg-background overflow-hidden border-t border-border">
             <div className="container mx-auto px-4 relative z-10">
                 {/* Page Header */}
                 <div className="max-w-4xl mx-auto text-center mb-16">
                     <Animated>
-                        <div className="inline-block px-4 py-1 bg-white border-2 border-black font-black uppercase tracking-widest text-sm mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -rotate-2">
-                             Contact
+                        <div className="inline-block px-4 py-1.5 bg-secondary/10 border border-secondary text-secondary font-mono text-sm uppercase tracking-wide mb-4">
+                             ● Contact
                         </div>
-                        <h1 className="text-6xl md:text-8xl font-black text-foreground mb-6 uppercase tracking-tighter leading-[0.8]">
-                            Initiate <span className="text-white bg-black px-2">Protocol</span>
+                        <h1 className="text-6xl md:text-8xl font-sans text-foreground mb-6">
+                            Initiate Protocol
                         </h1>
-                        <p className="text-xl md:text-2xl font-bold text-muted-foreground max-w-3xl mx-auto">
+                        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
                             Secure channel open. Awaiting mission parameters.
                         </p>
                     </Animated>
@@ -110,30 +110,30 @@ export default function ContactPage() {
                 <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20">
                     {/* Contact Form */}
                     <AnimatedItem delay={0.2}>
-                         <div className="bg-white border-2 border-black p-8 md:p-10 shadow-[8px_8px_0px_0px_black] relative h-full">
-                            <div className="absolute -top-3 -left-3 bg-secondary border-2 border-black p-2 z-10">
-                                <MessageSquare className="w-8 h-8 text-black" />
+                         <div className="bg-card border border-border p-8 md:p-10 relative h-full">
+                            <div className="absolute top-0 right-0 bg-secondary/10 border-l border-b border-border p-2 z-10">
+                                <MessageSquare className="w-6 h-6 text-secondary" />
                             </div>
                             
-                            <h3 className="text-3xl font-black uppercase mb-2">Send a Message</h3>
-                            <p className="text-muted-foreground font-bold text-sm mb-8 uppercase tracking-wide">I usually respond within 24 hours</p>
+                            <h3 className="text-3xl font-sans mb-2 text-foreground">Send a Message</h3>
+                            <p className="text-muted-foreground font-mono text-xs mb-8 uppercase tracking-wide">I usually respond within 24 hours</p>
 
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
-                                        <Label htmlFor="name" className="text-sm font-black uppercase">Name *</Label>
+                                        <Label htmlFor="name" className="text-xs font-mono uppercase text-foreground">Name</Label>
                                         <Input
                                             id="name"
                                             name="name"
                                             value={formData.name}
                                             onChange={handleInputChange}
                                             required
-                                            className="h-12 bg-muted/30 border-2 border-black rounded-none shadow-none focus:shadow-[4px_4px_0px_0px_black] transition-all font-bold placeholder:uppercase placeholder:text-gray-400"
-                                            placeholder="John Doe"
+                                            className="h-12 bg-background border border-border rounded-sm shadow-none focus:border-primary transition-all font-mono placeholder:text-muted-foreground"
+                                            placeholder="Jane Doe"
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <Label htmlFor="email" className="text-sm font-black uppercase">Email *</Label>
+                                        <Label htmlFor="email" className="text-xs font-mono uppercase text-foreground">Email</Label>
                                         <Input
                                             id="email"
                                             name="email"
@@ -141,27 +141,27 @@ export default function ContactPage() {
                                             value={formData.email}
                                             onChange={handleInputChange}
                                             required
-                                            className="h-12 bg-muted/30 border-2 border-black rounded-none shadow-none focus:shadow-[4px_4px_0px_0px_black] transition-all font-bold placeholder:uppercase placeholder:text-gray-400"
-                                            placeholder="john@example.com"
+                                            className="h-12 bg-background border border-border rounded-sm shadow-none focus:border-primary transition-all font-mono placeholder:text-muted-foreground"
+                                            placeholder="jane@example.com"
                                         />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <Label htmlFor="subject" className="text-sm font-black uppercase">Subject *</Label>
+                                    <Label htmlFor="subject" className="text-xs font-mono uppercase text-foreground">Subject</Label>
                                     <Input
                                         id="subject"
                                         name="subject"
                                         value={formData.subject}
                                         onChange={handleInputChange}
                                         required
-                                        className="h-12 bg-muted/30 border-2 border-black rounded-none shadow-none focus:shadow-[4px_4px_0px_0px_black] transition-all font-bold placeholder:uppercase placeholder:text-gray-400"
+                                        className="h-12 bg-background border border-border rounded-sm shadow-none focus:border-primary transition-all font-mono placeholder:text-muted-foreground"
                                         placeholder="Project Inquiry"
                                     />
                                 </div>
 
                                 <div className="space-y-2">
-                                    <Label htmlFor="message" className="text-sm font-black uppercase">Message *</Label>
+                                    <Label htmlFor="message" className="text-xs font-mono uppercase text-foreground">Message</Label>
                                     <Textarea
                                         id="message"
                                         name="message"
@@ -169,7 +169,7 @@ export default function ContactPage() {
                                         onChange={handleInputChange}
                                         required
                                         rows={8}
-                                        className="bg-muted/30 border-2 border-black rounded-none shadow-none focus:shadow-[4px_4px_0px_0px_black] transition-all resize-none font-bold placeholder:uppercase placeholder:text-gray-400 p-4"
+                                        className="bg-background border border-border rounded-sm shadow-none focus:border-primary transition-all resize-none font-mono placeholder:text-muted-foreground p-4"
                                         placeholder="Tell me about your project..."
                                     />
                                 </div>
@@ -177,11 +177,11 @@ export default function ContactPage() {
                                 <Button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className="w-full h-14 bg-black text-white hover:bg-neutral-800 border-2 border-black shadow-[6px_6px_0px_0px_#ffde00] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all font-black uppercase text-lg"
+                                    className="w-full h-14 bg-primary text-primary-foreground border border-primary hover:bg-transparent hover:text-primary transition-all font-sans text-lg"
                                 >
                                     {isSubmitting ? (
                                         <>
-                                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-3" />
+                                            <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin mr-3" />
                                             Encrypting...
                                         </>
                                     ) : (
@@ -193,16 +193,16 @@ export default function ContactPage() {
                                 </Button>
 
                                 {submitStatus === 'success' && (
-                                    <div className="flex items-center p-4 bg-green-500 text-white border-2 border-black shadow-[4px_4px_0px_0px_black]">
-                                        <CheckCircle className="w-6 h-6 mr-3" />
-                                        <span className="font-bold uppercase">Message sent successfully!</span>
+                                    <div className="flex items-center p-4 bg-green-500/10 text-green-500 border border-green-500 rounded-sm">
+                                        <CheckCircle className="w-5 h-5 mr-3" />
+                                        <span className="font-mono text-sm uppercase">Message sent successfully!</span>
                                     </div>
                                 )}
 
                                 {submitStatus === 'error' && (
-                                    <div className="flex items-center p-4 bg-red-500 text-white border-2 border-black shadow-[4px_4px_0px_0px_black]">
-                                        <AlertCircle className="w-6 h-6 mr-3" />
-                                        <span className="font-bold uppercase">Failed to send. Try again later.</span>
+                                    <div className="flex items-center p-4 bg-red-500/10 text-red-500 border border-red-500 rounded-sm">
+                                        <AlertCircle className="w-5 h-5 mr-3" />
+                                        <span className="font-mono text-sm uppercase">Failed to send. Try again later.</span>
                                     </div>
                                 )}
                             </form>
@@ -213,29 +213,29 @@ export default function ContactPage() {
                     <div className="space-y-12">
                          {/* Contact Details */}
                         <div className="space-y-6">
-                             <div className="inline-block bg-white border-2 border-black px-4 py-1 font-black uppercase text-sm shadow-[4px_4px_0px_0px_black]">
-                                 Direct Channels
+                             <div className="inline-block px-4 py-1.5 bg-secondary/10 border border-secondary text-secondary font-mono text-sm uppercase tracking-wide mb-4">
+                                 ● Direct Channels
                              </div>
                              
                             {contactInfo.map((info, index) => (
                                 <AnimatedItem key={index} delay={0.3 + index * 0.1}>
-                                    <div className="group bg-white border-2 border-black p-4 flex items-center hover:shadow-[6px_6px_0px_0px_black] hover:-translate-y-1 transition-all">
-                                        <div className={`p-4 border-2 border-black ${info.bg} text-white mr-5 shadow-[2px_2px_0px_0px_black]`}>
+                                    <div className="group bg-card border border-border p-4 flex items-center hover:-translate-y-1 transition-all">
+                                        <div className={`p-4 border border-border bg-background text-foreground mr-5`}>
                                             {info.icon}
                                         </div>
                                         <div>
-                                            <h3 className="font-black uppercase text-lg">{info.title}</h3>
+                                            <h3 className="font-sans text-lg text-foreground">{info.title}</h3>
                                             {info.link ? (
-                                                <a href={info.link} target="_blank" className="text-muted-foreground font-bold hover:text-black hover:underline decoration-2 underline-offset-2">
+                                                <a href={info.link} target="_blank" className="text-muted-foreground font-mono text-sm hover:text-primary hover:underline decoration-1 underline-offset-2">
                                                     {info.value}
                                                 </a>
                                             ) : (
-                                                <p className="text-muted-foreground font-bold">{info.value}</p>
+                                                <p className="text-muted-foreground font-mono text-sm">{info.value}</p>
                                             )}
                                         </div>
                                         {info.link && (
-                                            <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
-                                                <ArrowRight className="w-6 h-6" />
+                                            <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-primary">
+                                                <ArrowRight className="w-5 h-5" />
                                             </div>
                                         )}
                                     </div>
@@ -245,8 +245,8 @@ export default function ContactPage() {
 
                         {/* Social Links */}
                         <div className="space-y-6">
-                            <div className="inline-block bg-white border-2 border-black px-4 py-1 font-black uppercase text-sm shadow-[4px_4px_0px_0px_black]">
-                                 Social Profiles
+                            <div className="inline-block px-4 py-1.5 bg-secondary/10 border border-secondary text-secondary font-mono text-sm uppercase tracking-wide mb-4">
+                                 ● Social Profiles
                              </div>
                             
                             <div className="flex flex-wrap gap-4">
@@ -256,7 +256,7 @@ export default function ContactPage() {
                                         href={social.href}
                                         target="_blank"
                                         aria-label={social.label}
-                                        className={`flex items-center justify-center w-16 h-16 bg-white border-2 border-black shadow-[4px_4px_0px_0px_black] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200 group ${social.color}`}
+                                        className={`flex items-center justify-center w-16 h-16 bg-card border border-border text-foreground hover:bg-background hover:text-primary transition-all duration-200 group`}
                                     >
                                         <span className="group-hover:scale-110 transition-transform duration-200">{social.icon}</span>
                                     </a>
@@ -266,16 +266,16 @@ export default function ContactPage() {
                         </div>
 
                          {/* Availability */}
-                        <div className="bg-black text-white border-2 border-black p-8 shadow-[8px_8px_0px_0px_#8b5cf6]">
-                             <h3 className="text-2xl font-black uppercase mb-4 flex items-center gap-3">
-                                 <Clock className="w-6 h-6" /> Availability
+                        <div className="bg-card border border-border p-8 relative">
+                             <h3 className="text-2xl font-sans text-foreground mb-4 flex items-center gap-3">
+                                 <Clock className="w-5 h-5 text-primary" /> Availability
                              </h3>
-                             <p className="font-medium text-lg mb-4">
-                                Bandwidth available for <span className="text-accent font-bold">Q1 2026</span> operations.
+                             <p className="font-mono text-muted-foreground text-sm mb-4">
+                                Bandwidth available for <span className="text-primary font-bold">new</span> operations.
                              </p>
                              <div className="flex items-center gap-2">
-                                <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
-                                <span className="font-bold text-green-400 uppercase tracking-wider">Online Now</span>
+                                <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                                <span className="font-mono text-primary text-xs uppercase tracking-wider">Online Now</span>
                              </div>
                         </div>
                     </div>

@@ -5,79 +5,79 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 }
 
 :root {
-  /* Neo-Brutalist Palette */
-  --background: #ffffff;
-  --foreground: #000000;
+  /* Field Notes / Systems Builder Palette */
+  --background: #14181C; /* Deep slate-charcoal */
+  --foreground: #EDEAE3; /* Warm off-white */
 
-  --card: #ffffff;
-  --card-foreground: #000000;
+  --card: #1D2329; /* Slightly lifted panel tone */
+  --card-foreground: #EDEAE3;
 
-  --popover: #ffffff;
-  --popover-foreground: #000000;
+  --popover: #1D2329;
+  --popover-foreground: #EDEAE3;
 
-  /* Vibrant Retro Colors */
-  --primary: #5b21b6; /* Deep Violet - keeping a nod to original but bolder */
-  --primary-foreground: #ffffff;
+  --primary: #C98A3E; /* Muted amber/ochre */
+  --primary-foreground: #14181C;
 
-  --secondary: #ffde00; /* Pop Yellow */
-  --secondary-foreground: #000000;
+  --secondary: #4E8C82; /* Dusty signal-teal */
+  --secondary-foreground: #14181C;
 
-  --muted: #e0e0e0;
-  --muted-foreground: #404040;
+  --muted: #1D2329;
+  --muted-foreground: #8B949E; /* Dimmer off-white/gray */
 
-  --accent: #ff00ff; /* Hot Pink */
-  --accent-foreground: #ffffff;
+  --accent: #4E8C82;
+  --accent-foreground: #14181C;
 
   --destructive: #ff3333;
   --destructive-foreground: #ffffff;
 
-  --border: #000000;
-  --input: #000000;
-  --ring: #000000;
+  --border: #2C333A; /* Low-contrast warm gray */
+  --input: #2C333A;
+  --ring: #C98A3E;
 
-  --radius: 0px; /* Hard edges */
+  --radius: 4px; /* Slight softening, not brutalist */
 
-  /* Custom Variables for Neo-Brutalism */
-  --shadow-hard: 4px 4px 0px 0px #000000;
-  --border-width: 2px;
+  /* Custom Variables */
+  --shadow-hard: none;
+  --border-width: 1px;
 }
 
 .dark {
-  /* Dark Mode Neo-Brutalist */
-  --background: #0a0a0a;
-  --foreground: #ffffff;
+  /* Enforce same palette to maintain the specific brand direction */
+  --background: #14181C;
+  --foreground: #EDEAE3;
 
-  --card: #1a1a1a;
-  --card-foreground: #ffffff;
+  --card: #1D2329;
+  --card-foreground: #EDEAE3;
 
-  --popover: #1a1a1a;
-  --popover-foreground: #ffffff;
+  --popover: #1D2329;
+  --popover-foreground: #EDEAE3;
 
-  --primary: #8b5cf6; /* Brighter Violet */
-  --primary-foreground: #ffffff;
+  --primary: #C98A3E;
+  --primary-foreground: #14181C;
 
-  --secondary: #facc15; /* Bright Yellow */
-  --secondary-foreground: #000000;
+  --secondary: #4E8C82;
+  --secondary-foreground: #14181C;
 
-  --muted: #262626;
-  --muted-foreground: #a3a3a3;
+  --muted: #1D2329;
+  --muted-foreground: #8B949E;
 
-  --accent: #d946ef; /* Magenta */
-  --accent-foreground: #ffffff;
+  --accent: #4E8C82;
+  --accent-foreground: #14181C;
 
-  --destructive: #ef4444;
+  --destructive: #ff3333;
   --destructive-foreground: #ffffff;
 
-  --border: #ffffff;
-  --input: #ffffff;
-  --ring: #ffffff;
+  --border: #2C333A;
+  --input: #2C333A;
+  --ring: #C98A3E;
   
-  --shadow-hard: 4px 4px 0px 0px #ffffff;
+  --shadow-hard: none;
 }
 
 @theme inline {
@@ -146,54 +146,6 @@
   --sidebar-ring: oklch(0.55 0.22 260);
 }
 
-.dark {
-  /* Dark Mode: Deep Violet/Blue Black background (Void style) */
-  --background: oklch(0.15 0.05 260);
-  --foreground: oklch(0.95 0.02 260);
-
-  --card: oklch(0.18 0.05 260);
-  --card-foreground: oklch(0.95 0.02 260);
-
-  --popover: oklch(0.18 0.05 260);
-  --popover-foreground: oklch(0.95 0.02 260);
-
-  /* Primary: Neon Blue */
-  --primary: oklch(0.65 0.22 260);
-  --primary-foreground: oklch(0.15 0.05 260);
-
-  /* Secondary: Deep muted violet */
-  --secondary: oklch(0.25 0.08 260);
-  --secondary-foreground: oklch(0.95 0.02 260);
-
-  --muted: oklch(0.25 0.05 260);
-  --muted-foreground: oklch(0.7 0.05 260);
-
-  /* Accent: Neon Orange/Peach */
-  --accent: oklch(0.7 0.18 50);
-  --accent-foreground: oklch(0.15 0.05 260);
-
-  --destructive: oklch(0.6 0.2 25);
-  --destructive-foreground: oklch(0.95 0.02 260);
-
-  --border: oklch(0.95 0.02 260 / 0.15);
-  --input: oklch(0.95 0.02 260 / 0.15);
-  --ring: oklch(0.65 0.22 260);
-
-  --chart-1: oklch(0.65 0.22 260);
-  --chart-2: oklch(0.7 0.18 50);
-  --chart-3: oklch(0.75 0.15 160);
-  --chart-4: oklch(0.85 0.18 85);
-  --chart-5: oklch(0.65 0.18 300);
-
-  --sidebar: oklch(0.15 0.05 260);
-  --sidebar-foreground: oklch(0.95 0.02 260);
-  --sidebar-primary: oklch(0.65 0.22 260);
-  --sidebar-primary-foreground: oklch(0.15 0.05 260);
-  --sidebar-accent: oklch(0.25 0.08 260);
-  --sidebar-accent-foreground: oklch(0.95 0.02 260);
-  --sidebar-border: oklch(0.95 0.02 260 / 0.15);
-  --sidebar-ring: oklch(0.65 0.22 260);
-}
 
 @layer base {
   * {
