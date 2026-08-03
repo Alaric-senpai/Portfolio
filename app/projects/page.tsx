@@ -23,21 +23,21 @@ export default function ProjectsPage() {
     })
 
     return (
-        <div className="min-h-screen pt-24 pb-20 bg-background overflow-hidden border-t-2 border-black">
+        <div className="min-h-screen pt-24 pb-20 bg-background overflow-hidden border-t border-border">
              {/* Decorative Grid */}
-             <div className="fixed inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:40px_40px] -z-10 pointer-events-none"></div>
+             <div className="fixed inset-0 bg-[linear-gradient(to_right,#2C333A_1px,transparent_1px),linear-gradient(to_bottom,#2C333A_1px,transparent_1px)] opacity-20 bg-[size:40px_40px] -z-10 pointer-events-none"></div>
 
             <div className="container mx-auto px-4 relative z-10">
                 {/* Page Header */}
                 <div className="max-w-4xl mx-auto text-center mb-16">
                     <Animated>
-                        <div className="inline-block px-4 py-1 bg-accent border-2 border-black font-black uppercase tracking-widest text-sm mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -rotate-1">
-                             Portfolio
+                        <div className="inline-block px-4 py-1.5 bg-secondary/10 border border-secondary text-secondary font-mono text-sm uppercase tracking-wide mb-4">
+                             ● Portfolio
                         </div>
-                        <h1 className="text-6xl md:text-8xl font-black text-foreground mb-6 uppercase tracking-tighter leading-[0.8] drop-shadow-[4px_4px_0px_rgba(0,0,0,1)]">
-                            Deployed <span className="text-secondary bg-black px-2">Artifacts</span>
+                        <h1 className="text-6xl md:text-8xl font-sans text-foreground mb-6">
+                            Deployed Artifacts
                         </h1>
-                        <p className="text-xl md:text-2xl font-bold text-muted-foreground max-w-3xl mx-auto">
+                        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
                             A visual archive of deployed solutions and engineering milestones.
                         </p>
                     </Animated>
@@ -45,16 +45,16 @@ export default function ProjectsPage() {
 
                 {/* Search and Filter Section */}
                 <div className="max-w-6xl mx-auto mb-12">
-                     <div className="bg-white border-2 border-black p-4 shadow-[8px_8px_0px_0px_black] flex flex-col md:flex-row gap-6 items-center justify-between">
+                     <div className="bg-card border border-border p-4 flex flex-col md:flex-row gap-6 items-center justify-between">
                         {/* Search */}
                         <div className="relative w-full md:w-96">
-                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black w-5 h-5 font-bold" />
+                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
                             <Input
                                 type="text"
                                 placeholder="SEARCH PROJECTS..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="pl-10 h-12 bg-muted border-2 border-black rounded-none text-black placeholder:text-gray-500 placeholder:uppercase placeholder:font-bold focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all font-bold"
+                                className="pl-10 h-12 bg-background border border-border rounded-none text-foreground placeholder:text-muted-foreground font-mono transition-all"
                             />
                         </div>
 
@@ -64,10 +64,10 @@ export default function ProjectsPage() {
                                 <button
                                     key={category}
                                     onClick={() => setActiveCategory(category)}
-                                    className={`px-4 py-2 text-sm font-black uppercase border-2 border-black transition-all ${
+                                    className={`px-4 py-2 text-sm font-mono uppercase border border-border transition-all ${
                                         activeCategory === category
-                                            ? "bg-black text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)] translate-x-[1px] translate-y-[1px]"
-                                            : "bg-white text-black hover:bg-secondary hover:shadow-[4px_4px_0px_0px_black] hover:translate-x-[-2px] hover:translate-y-[-2px]"
+                                            ? "bg-primary text-primary-foreground border-primary"
+                                            : "bg-background text-foreground hover:bg-muted"
                                     }`}
                                 >
                                     {category}

@@ -43,11 +43,11 @@ export const ProjectCard = ({ project }: { project: Project }) => {
     return (
         <Card
             className={cn(
-                "bg-card border-2 border-black p-0 overflow-hidden group h-full flex flex-col transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1",
+                "bg-card border border-border p-0 overflow-hidden group h-full flex flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-1",
             )}
         >
             {/* Image container */}
-            <div className="relative aspect-video w-full overflow-hidden border-b-2 border-black">
+            <div className="relative aspect-video w-full overflow-hidden border-b border-border">
                 <Image
                     src={project.image || '/assets/joyboy.jpg'}
                     alt={project.title}
@@ -56,16 +56,16 @@ export const ProjectCard = ({ project }: { project: Project }) => {
                 />
                 
                 {/* Overlay pattern (optional retro feel) */}
-                <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors"></div>
+                <div className="absolute inset-0 bg-background/10 group-hover:bg-transparent transition-colors"></div>
 
                 {/* Top badges row */}
                 <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
-                    <Badge className="bg-primary text-primary-foreground border-2 border-black rounded-md px-2 py-0.5">
+                    <Badge className="bg-primary text-primary-foreground border-transparent rounded-sm px-2 py-0.5 font-mono">
                         {project.category}
                     </Badge>
 
                     {/* Status Badge */}
-                    <Badge className={cn(statusConfig.color, "border-2 rounded-md px-2 py-0.5 flex items-center gap-1 shadow-sm")}>
+                    <Badge className={cn(statusConfig.color, "border-transparent rounded-sm px-2 py-0.5 flex items-center gap-1 font-mono")}>
                         <StatusIcon className="w-3 h-3" />
                         {statusConfig.text}
                     </Badge>
@@ -74,7 +74,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
                 {/* Right side badges */}
                 <div className="absolute top-4 right-4 flex flex-col gap-2">
                     {project.featured && (
-                        <Badge className="bg-amber-100 text-amber-800 border-2 border-black flex items-center gap-1 rounded-md">
+                        <Badge className="bg-secondary text-secondary-foreground border-transparent flex items-center gap-1 rounded-sm font-mono">
                             <Sparkles className="w-3 h-3" />
                             Featured
                         </Badge>
@@ -84,7 +84,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
 
             <CardContent className="p-6 flex-grow flex flex-col">
                 <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-xl font-black text-foreground group-hover:text-primary transition-colors">
+                    <h3 className="text-xl font-sans text-foreground group-hover:text-primary transition-colors">
                         {project.title}
                     </h3>
                     {project.demoUrl && (
@@ -92,7 +92,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
                             href={project.demoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-muted-foreground hover:text-primary transition-colors p-1 border border-transparent hover:border-black rounded-sm"
+                            className="text-muted-foreground hover:text-primary transition-colors p-1"
                             title="View Live Demo"
                         >
                             <ExternalLink className="w-5 h-5" />
@@ -100,7 +100,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
                     )}
                 </div>
 
-                <p className="text-muted-foreground mb-6 line-clamp-3 text-sm leading-relaxed font-medium">
+                <p className="text-muted-foreground mb-6 line-clamp-3 text-sm leading-relaxed">
                     {project.description}
                 </p>
 
@@ -109,25 +109,25 @@ export const ProjectCard = ({ project }: { project: Project }) => {
                     {project.tags.slice(0, 6).map((tag: string, i: number) => (
                         <span
                             key={i}
-                            className="px-2 py-1 bg-secondary border border-black/20 rounded-md text-secondary-foreground text-xs font-semibold"
+                            className="px-2 py-1 bg-background border border-border text-foreground text-xs font-mono"
                         >
                             {tag}
                         </span>
                     ))}
                     {project.tags.length > 6 && (
-                        <span className="px-2 py-1 bg-muted border border-black/20 rounded-md text-muted-foreground text-xs font-semibold">
+                        <span className="px-2 py-1 bg-muted border border-border text-muted-foreground text-xs font-mono">
                             +{project.tags.length - 6} more
                         </span>
                     )}
                 </div>
             </CardContent>
 
-            <CardFooter className="w-full bg-muted/50 border-t-2 border-black p-4 flex justify-between gap-3">
+            <CardFooter className="w-full bg-background border-t border-border p-4 flex justify-between gap-3">
                 {project.githubUrl && (
                     <Button
                         variant="outline"
                         size="sm"
-                        className="bg-background"
+                        className="bg-transparent border-border text-foreground hover:bg-muted font-sans"
                         asChild
                     >
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
@@ -139,7 +139,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
 
                 <Button
                     size="sm"
-                    className="ml-auto"
+                    className="ml-auto font-sans"
                     asChild
                 >
                     <Link href={`/projects/${project.id}`}>

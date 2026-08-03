@@ -29,7 +29,7 @@ export default function Footer() {
                <div className="w-8 h-8 bg-primary border border-black rounded flex items-center justify-center">
                     <span className="font-bold text-primary-foreground">C</span>
                </div>
-              <span className="text-xl font-black tracking-tight text-foreground">Charles.dev</span>
+              <span className="text-xl font-black tracking-tight text-foreground">DevCharles</span>
             </Link>
             <p className="text-muted-foreground max-w-sm leading-relaxed">
               Full-stack developer specializing in building exceptional digital experiences. Currently focused on
@@ -86,7 +86,7 @@ export default function Footer() {
               </li>
               <li className="text-muted-foreground">
                 <span className="block text-foreground font-semibold">Location:</span>
-                Nyeri, KE
+                Makueni, KE
               </li>
             </ul>
           </div>
@@ -97,7 +97,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground font-medium">
-          <p>© {currentYear} Charles.dev. All rights reserved.</p>
+          <p>© {currentYear} Charles Kahuho. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link href="/sitemap.xml" className="hover:text-primary transition-colors hover:underline">
               Sitemap

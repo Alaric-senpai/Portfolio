@@ -1,26 +1,31 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-sans", /* Display font mapping */
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-body",
+  subsets: ["latin"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "DevCharles | Full-Stack Web & Mobile Developer",
+    default: "DevCharles | Full-Stack Web & Mobile Developer in Makueni, Kenya",
     template: "%s | DevCharles"
   },
   description:
-    "Portfolio of Charles Kahuho (DevCharles) — Full-stack web & mobile developer specializing in Next.js, React Native, Appwrite, and cross-platform solutions. Explore projects, case studies, and insights.",
+    "Charles Kahuho (DevCharles) is a full-stack developer in Makueni, Kenya, building web and mobile apps with Next.js, React Native, and Node.js.",
   keywords: [
     "DevCharles",
     "Charles Kahuho",
@@ -28,11 +33,12 @@ export const metadata: Metadata = {
     "mobile developer",
     "Next.js",
     "React Native",
-    "Appwrite",
+    "Node.js",
     "TypeScript",
     "full-stack",
     "cross-platform apps",
-    "developer portfolio"
+    "developer portfolio Makueni",
+    "Kenya"
   ],
   authors: [{ name: "Charles Kahuho", url: "https://devcharles.me" }],
   creator: "Charles Kahuho",
@@ -44,17 +50,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://devcharles.me",
-    title: "DevCharles | Full-Stack Web & Mobile Developer",
+    title: "DevCharles | Full-Stack Web & Mobile Developer in Makueni, Kenya",
     description:
-      "Explore the projects and portfolio of Charles Kahuho (DevCharles). Building modern, scalable apps with Next.js, React Native, and Appwrite.",
+      "Charles Kahuho (DevCharles) is a full-stack developer in Makueni, Kenya, building web and mobile apps with Next.js, React Native, and Node.js.",
     siteName: "DevCharles",
     locale: "en_US",
     images: [
       {
-        url: "https://devcharles.me/profile.png",
+        url: "https://devcharles.me/assets/projects/echoplain-base.png",
         width: 1200,
         height: 630,
-        alt: "DevCharles Portfolio Preview",
+        alt: "DevCharles Portfolio - Full-Stack Developer",
       },
     ],
   },
@@ -62,10 +68,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     // site: "@devcharles", // if you have a Twitter handle
     // creator: "@devcharles",
-    title: "DevCharles | Full-Stack Web & Mobile Developer",
+    title: "DevCharles | Full-Stack Web & Mobile Developer in Makueni, Kenya",
     description:
-      "Building modern web & mobile experiences with Next.js, React Native & Appwrite.",
-    images: ["https://devcharles.me/profile.png"],
+      "Charles Kahuho (DevCharles) is a full-stack developer in Makueni, Kenya, building web and mobile apps with Next.js, React Native, and Node.js.",
+    images: ["https://devcharles.me/assets/projects/echoplain-base.png"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -83,7 +89,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} font-body antialiased bg-background text-foreground`}
       >
         <script
           type="application/ld+json"
@@ -94,6 +100,11 @@ export default function RootLayout({
               name: "Charles Kahuho",
               url: "https://devcharles.me",
               jobTitle: "Full-Stack Developer",
+              address: {
+                "@type": "PostalAddress",
+                "addressLocality": "Makueni County",
+                "addressCountry": "Kenya"
+              },
               sameAs: [
                 "https://github.com/alaric-senpai",
                 "https://linkedin.com/in/charles-kahuho", 

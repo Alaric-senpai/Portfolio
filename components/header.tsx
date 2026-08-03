@@ -49,7 +49,7 @@ export default function Header() {
                 <Code className="w-5 h-5 text-primary-foreground" />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-black text-foreground tracking-tight">Charles</span>
+                <span className="text-xl font-black text-foreground tracking-tight">DevCharles</span>
               </div>
             </Link>
 
