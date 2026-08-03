@@ -10,11 +10,11 @@ import { motion } from "framer-motion"
 
 const experienceData = [
     {
-        role: "Software Developer Assoc.",
+        role: "Software Developer Intern / Attaché",
         company: "Department of ICT",
         period: "Feb - May 2025",
         description:
-            "Spearheaded applications development within the ICT department. Engineered enterprise-grade web solutions and fostered collaborative development protocols.",
+            "Completed a comprehensive attachment within the ICT department, shadowing senior engineers and assisting with the development and maintenance of internal applications. Gained practical experience in collaborative development workflows, troubleshooting, and applying theoretical concepts to real-world codebases.",
         achievements: []
     },
 ]

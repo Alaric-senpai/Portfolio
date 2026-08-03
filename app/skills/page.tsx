@@ -147,17 +147,17 @@ export const allTechCategories = [
 
 export default function SkillsPage() {
     return (
-        <div className="min-h-screen pt-24 pb-20 bg-background overflow-hidden border-t-2 border-black">
+        <div className="min-h-screen pt-24 pb-20 bg-background overflow-hidden border-t border-border">
             <div className="container mx-auto px-4 relative z-10">
                 {/* Page Header */}
                 <div className="max-w-4xl mx-auto text-center mb-20 animate-in fade-in zoom-in duration-500">
-                    <div className="inline-block px-4 py-1 bg-white border-2 border-black font-black uppercase tracking-widest text-sm mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -rotate-3">
-                         Expertise
+                    <div className="inline-block px-4 py-1.5 bg-secondary/10 border border-secondary text-secondary font-mono text-sm uppercase tracking-wide mb-6">
+                         ● Expertise
                     </div>
-                    <h1 className="text-6xl md:text-8xl font-black text-foreground mb-6 uppercase tracking-tighter leading-[0.8]">
-                        Technical <span className="text-white bg-black px-2">Proficiency</span>
+                    <h1 className="text-6xl md:text-8xl font-sans text-foreground mb-6">
+                        Technical Proficiency
                     </h1>
-                    <p className="text-xl md:text-2xl font-bold text-muted-foreground max-w-3xl mx-auto border-b-4 border-black pb-4 inline-block">
+                    <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto border-b border-border pb-4 inline-block">
                         The tools and technologies I use to build digital solutions.
                     </p>
                 </div>
@@ -166,15 +166,15 @@ export default function SkillsPage() {
                 <div className="grid md:grid-cols-2 gap-8">
                     {allTechCategories.map((category, index) => (
                         <AnimatedItem key={index} delay={0.1 * index} className="h-full">
-                            <div className="h-full bg-white border-2 border-black flex flex-col shadow-[8px_8px_0px_0px_black] hover:shadow-[4px_4px_0px_0px_black] hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-300">
-                                <div className={`p-6 border-b-2 border-black ${category.color} flex items-center justify-between`}>
-                                    <h2 className="text-2xl font-black uppercase flex items-center gap-3">
-                                        <div className="p-2 bg-white border-2 border-black shadow-[2px_2px_0px_0px_black]">
+                            <div className="h-full bg-card border border-border flex flex-col hover:-translate-y-1 transition-all duration-300">
+                                <div className={`p-6 border-b border-border flex items-center justify-between`}>
+                                    <h2 className="text-2xl font-sans text-foreground flex items-center gap-3">
+                                        <div className="p-2 bg-background border border-border text-foreground">
                                             {category.icon}
                                         </div>
                                         {category.title}
                                     </h2>
-                                    <Terminal className="w-5 h-5 opacity-20" />
+                                    <Terminal className="w-5 h-5 text-muted-foreground opacity-20" />
                                 </div>
                                 
                                 <div className="p-6 flex-grow">
@@ -182,21 +182,21 @@ export default function SkillsPage() {
                                         {category.skills.map((skill, i) => {
                                             const Icon = skill.icon
                                             return (
-                                                <div key={i} className="flex flex-col items-center justify-center p-4 border-2 border-black/5 bg-black/5 hover:bg-black/10 hover:border-black/20 transition-all rounded-lg gap-3 text-center min-h-[100px] group">
-                                                    <div className="text-4xl text-foreground/80 group-hover:scale-110 transition-transform duration-300">
+                                                <div key={i} className="flex flex-col items-center justify-center p-4 border border-border bg-background hover:border-primary transition-all gap-3 text-center min-h-[100px] group">
+                                                    <div className="text-4xl text-muted-foreground group-hover:text-primary transition-colors duration-300">
                                                         <Icon className="w-8 h-8" />
                                                     </div>
-                                                    <span className="font-bold text-sm uppercase leading-tight">{skill.name}</span>
+                                                    <span className="font-mono text-xs text-foreground uppercase tracking-wide leading-tight">{skill.name}</span>
                                                 </div>
                                             )
                                         })}
                                     </div>
                                 </div>
 
-                                <div className="p-4 bg-muted/20 border-t-2 border-black">
+                                <div className="p-4 bg-background border-t border-border">
                                     <div className="flex gap-2 flex-wrap">
                                         {[1,2,3].map((_, i) => (
-                                            <div key={i} className="w-2 h-2 bg-black rounded-full"></div>
+                                            <div key={i} className="w-1.5 h-1.5 bg-border rounded-full"></div>
                                         ))}
                                     </div>
                                 </div>
@@ -207,10 +207,10 @@ export default function SkillsPage() {
 
                 {/* Additional / "Other" skills tag cloud style */}
                 <AnimatedItem delay={0.6} className="mt-20">
-                     <div className="bg-black text-white border-2 border-black p-10 shadow-[12px_12px_0px_0px_#8b5cf6] relative overflow-hidden">
-                        <Braces className="absolute -right-10 -bottom-10 w-64 h-64 text-white/5 rotate-12" />
+                     <div className="bg-card text-foreground border border-border p-10 relative overflow-hidden">
+                        <Braces className="absolute -right-10 -bottom-10 w-64 h-64 text-muted-foreground/10 rotate-12" />
                         
-                        <h3 className="text-4xl font-black uppercase mb-8 relative z-10 border-b-2 border-white/20 pb-4 inline-block">
+                        <h3 className="text-3xl font-sans mb-8 relative z-10 border-b border-border pb-4 inline-block">
                             Currently learning/researching
                         </h3>
                         
@@ -218,7 +218,7 @@ export default function SkillsPage() {
                             {["Rust", "WebAssembly", "Three.js", "AI Integration", "Solidity", "System Design", "Cloud Architecture"].map((item, i) => (
                                 <span 
                                     key={i} 
-                                    className="px-6 py-3 border-2 border-white text-xl font-bold uppercase hover:bg-white hover:text-black transition-colors cursor-default"
+                                    className="px-4 py-2 border border-border bg-background font-mono text-sm uppercase text-foreground hover:border-primary transition-colors cursor-default"
                                 >
                                     {item}
                                 </span>
