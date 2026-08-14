@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { DM_Serif_Display, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-sans", /* Display font mapping */
+const dmSerif = DM_Serif_Display({
+  variable: "--font-sans",
+  weight: "400",
   subsets: ["latin"],
 });
 
-const inter = Inter({
+const dmSans = DM_Sans({
   variable: "--font-body",
   subsets: ["latin"],
 });
@@ -89,7 +90,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-background">
       <body
-        className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} font-body antialiased bg-background text-foreground`}
+        className={`${dmSerif.variable} ${dmSans.variable} ${jetbrainsMono.variable} font-body antialiased bg-background text-foreground`}
       >
         <script
           type="application/ld+json"

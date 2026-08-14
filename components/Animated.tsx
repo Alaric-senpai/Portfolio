@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils"
 
 gsap.registerPlugin(ScrollTrigger)
 
-type AnimatedProps = { children: React.ReactNode; className?: string; delay?: number; stagger?: boolean; isContainer?: boolean; repeat?: boolean; id?: string }
+type AnimatedProps = { children: React.ReactNode; className?: string; delay?: number; stagger?: boolean; isContainer?: boolean; repeat?: boolean; duration?: number; id?: string }
 
 export default function Animated({ children, className, delay = 0, stagger = false, isContainer = false, id }: AnimatedProps) {
   const ref = useRef<HTMLDivElement>(null)

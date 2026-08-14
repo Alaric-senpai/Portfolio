@@ -1,23 +1,5 @@
 "use client"
-
-import { useState } from "react"
+import {useState} from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Menu, X } from "lucide-react"
-import { cn } from "@/lib/utils"
-
-const navItems = ["Home", "About", "Skills", "Projects", "Contact"]
-
-export default function Header() {
-  const pathname = usePathname()
-  const [open, setOpen] = useState(false)
-  return <header className="topbar">
-    <Link href="/" className="wordmark" aria-label="DevCharles home">dev<i>charles</i></Link>
-    <nav className="main-nav" aria-label="Main navigation">
-      {navItems.map((item) => { const href = item === "Home" ? "/" : `/${item.toLowerCase()}`; return <Link key={item} href={href} className={cn(pathname === href && "text-primary")}>{item}</Link> })}
-    </nav>
-    <div className="availability"><span className="status-dot" /> available for select work</div>
-    <button className="menu-toggle" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
-    {open && <nav className="absolute left-0 right-0 top-full flex flex-col gap-5 border-b border-border bg-background p-6 font-mono text-xs uppercase lg:hidden">{navItems.map((item) => { const href = item === "Home" ? "/" : `/${item.toLowerCase()}`; return <Link key={item} href={href} onClick={() => setOpen(false)} className={cn(pathname === href && "text-primary")}>{item}</Link> })}</nav>}
-  </header>
-}
+const items=[['Home','/'],['About','/about'],['Skills','/skills'],['Projects','/projects'],['Contact','/contact']]
+export default function Header(){const[open,setOpen]=useState(false);return <header className="archive-nav"><Link href="/" className="mark">dev<b>charles</b></Link><nav className="nav-links">{items.map(([label,href])=><Link href={href} key={href}>{label}</Link>)}</nav><span className="nav-status">open to work</span><button className="md:hidden font-mono text-xs uppercase" onClick={()=>setOpen(!open)}>{open?'close':'menu'}</button>{open&&<nav className="absolute top-full left-0 right-0 bg-background border-b border-border p-6 flex flex-col gap-5 font-mono text-xs uppercase md:hidden">{items.map(([label,href])=><Link href={href} key={href} onClick={()=>setOpen(false)}>{label}</Link>)}</nav>}</header>}
