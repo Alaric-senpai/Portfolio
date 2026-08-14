@@ -14,7 +14,7 @@ export default function HeroSection() {
       <div className="container mx-auto px-4 flex flex-col items-center text-center z-10">
           <div className="space-y-6 max-w-4xl">
             <div className="inline-block animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <div className="inline-block px-4 py-1.5 bg-secondary/10 border border-secondary text-secondary font-mono text-sm uppercase tracking-wide">
+                <div className="inline-block px-4 py-1.5 bg-secondary border border-primary text-primary font-mono text-sm uppercase tracking-wide">
                 ● Available for New Opportunities
                 </div>
             </div>
