@@ -1,10 +1,110 @@
-"use client"
-import { useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowLeft, ArrowUpRight, Share2 } from "lucide-react"
-import Animated from "@/components/Animated"
-import type { Project } from "@/lib/hardcoded"
-import { toast } from "sonner"
+"use client";
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft, ArrowUpRight, Share2 } from "lucide-react";
+import Animated from "@/components/Animated";
+import type { Project } from "@/lib/hardcoded";
+import { toast } from "sonner";
 
-export default function ProjectDetailClient({ project }: { project: Project }) { const [selected, setSelected] = useState(project.image); const images = [project.image, ...project.otherimages]; const share = async () => { try { if (navigator.share) await navigator.share({ title: project.title, text: project.description, url: location.href }); else await navigator.clipboard.writeText(location.href); toast.success("Project link copied") } catch {} }; return <main className="case-file"><div className="wrap"><Animated><Link href="/projects" className="back-link"><ArrowLeft size={16} /> Back to archive</Link><p className="eyebrow">Case file / {project.category}</p><h1>{project.title}</h1><p className="case-lede">{project.description}</p><div className="case-actions">{project.demoUrl && <a href={project.demoUrl} target="_blank" rel="noreferrer" className="submit-button">View live <ArrowUpRight size={17} /></a>}{project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noreferrer" className="text-link">Source on GitHub <ArrowUpRight size={16} /></a>}</div></Animated><div className="case-grid"><Animated className="case-visual"><div className="case-image"><Image src={selected} alt={project.title} fill priority sizes="(max-width: 900px) 100vw, 70vw" /></div><div className="thumb-strip">{images.map((image) => <button key={image} onClick={() => setSelected(image)} className={selected === image ? "thumb selected" : "thumb"}><Image src={image} alt="" fill sizes="120px" /></button>)}</div></Animated><div className="case-details"><Animated delay={.1}><p className="eyebrow">The brief</p><p className="case-body">{project.description}</p></Animated><Animated delay={.16}><p className="eyebrow">Built with</p><div className="case-tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></Animated><Animated delay={.22}><p className="eyebrow">The parts</p><ul className="case-parts">{project.section.map((item) => <li key={item}>{item}</li>)}</ul><button onClick={share} className="share-button"><Share2 size={16} /> Share this case file</button></Animated></div></div></div></main> }
+export default function ProjectDetailClient({ project }: { project: Project }) {
+  const [selected, setSelected] = useState(project.image);
+  const images = [project.image, ...project.otherimages];
+  const share = async () => {
+    try {
+      if (navigator.share)
+        await navigator.share({
+          title: project.title,
+          text: project.description,
+          url: location.href,
+        });
+      else await navigator.clipboard.writeText(location.href);
+      toast.success("Project link copied");
+    } catch {}
+  };
+  return (
+    <main className="case-file">
+      <div className="wrap">
+        <Animated>
+          <Link href="/projects" className="back-link">
+            <ArrowLeft size={16} /> Back to archive
+          </Link>
+          <p className="eyebrow">Case file / {project.category}</p>
+          <h1>{project.title}</h1>
+          <p className="case-lede">{project.description}</p>
+          <div className="case-actions">
+            {project.demoUrl && (
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="submit-button"
+              >
+                View live <ArrowUpRight size={17} />
+              </a>
+            )}
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="text-link"
+              >
+                Source on GitHub <ArrowUpRight size={16} />
+              </a>
+            )}
+          </div>
+        </Animated>
+        <div className="case-grid">
+          <Animated className="case-visual">
+            <div className="case-image">
+              <Image
+                src={selected}
+                alt={project.title}
+                fill
+                priority
+                sizes="(max-width: 900px) 100vw, 70vw"
+              />
+            </div>
+            <div className="thumb-strip">
+              {images.map((image) => (
+                <button
+                  key={image}
+                  onClick={() => setSelected(image)}
+                  className={selected === image ? "thumb selected" : "thumb"}
+                >
+                  <Image src={image} alt="" fill sizes="120px" />
+                </button>
+              ))}
+            </div>
+          </Animated>
+          <div className="case-details">
+            <Animated delay={0.1}>
+              <p className="eyebrow">The brief</p>
+              <p className="case-body">{project.description}</p>
+            </Animated>
+            <Animated delay={0.16}>
+              <p className="eyebrow">Built with</p>
+              <div className="case-tags">
+                {project.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+            </Animated>
+            <Animated delay={0.22}>
+              <p className="eyebrow">The parts</p>
+              <ul className="case-parts">
+                {project.section.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <button onClick={share} className="share-button">
+                <Share2 size={16} /> Share this case file
+              </button>
+            </Animated>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}

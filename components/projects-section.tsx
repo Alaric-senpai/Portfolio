@@ -1,4 +1,44 @@
-import Link from "next/link"
-import { projects } from "@/lib/hardcoded"
-import Animated from "./Animated"
-export default function ProjectsSection(){return <section className="archive" id="projects"><div className="section-rule"><b>02 / The archive</b><span/><i>Selected builds</i></div><div className="archive-header"><h2>Things<br/><em>made</em></h2><p>Products, experiments and systems built from a blank page.</p></div><div>{projects.filter(p=>p.featured).slice(0,6).map((p,i)=><Animated key={p.id}><Link className="record" href={`/projects/${p.id}`}><span className="record-index">0{i+1}</span><div><h3>{p.title}</h3><div className="record-tags">{p.tags.slice(0,3).map(t=><span key={t}>{t}</span>)}</div></div><p>{p.description}</p><span className="record-arrow">↗</span></Link></Animated>)}</div></section>}
+import Link from "next/link";
+import { projects } from "@/lib/hardcoded";
+import Animated from "./Animated";
+export default function ProjectsSection() {
+  return (
+    <section className="archive" id="projects">
+      <div className="section-rule">
+        <b>02 / The archive</b>
+        <span />
+        <i>Selected builds</i>
+      </div>
+      <div className="archive-header">
+        <h2>
+          Things
+          <br />
+          <em>made</em>
+        </h2>
+        <p>Products, experiments and systems built from a blank page.</p>
+      </div>
+      <div>
+        {projects
+          .filter((p) => p.featured)
+          .slice(0, 6)
+          .map((p, i) => (
+            <Animated key={p.id}>
+              <Link className="record" href={`/projects/${p.id}`}>
+                <span className="record-index">0{i + 1}</span>
+                <div>
+                  <h3>{p.title}</h3>
+                  <div className="record-tags">
+                    {p.tags.slice(0, 3).map((t) => (
+                      <span key={t}>{t}</span>
+                    ))}
+                  </div>
+                </div>
+                <p>{p.description}</p>
+                <span className="record-arrow">↗</span>
+              </Link>
+            </Animated>
+          ))}
+      </div>
+    </section>
+  );
+}

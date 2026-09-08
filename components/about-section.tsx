@@ -1,3 +1,37 @@
-import Link from "next/link"
-import Animated from "./Animated"
-export default function AboutSection(){return <section className="editorial-section" id="about"><div className="section-rule"><b>01 / The person</b><span/><i>Not just the output</i></div><div className="statement"><h2>Good work is<br/><em>quietly</em><br/>considered.</h2><div><p className="statement-copy">I’m Charles, a full-stack developer from Makueni, Kenya. I build practical web and mobile products that feel calm to use, load quickly, and hold up in the real world.</p><p className="small-copy">My work sits between product thinking and engineering: understand the problem, remove the noise, then make the useful thing feel inevitable.</p><Link className="text-link" href="/about">Read the longer version →</Link></div></div></section>}
+import Link from "next/link";
+import Animated from "./Animated";
+export default function AboutSection() {
+  return (
+    <section className="editorial-section" id="about">
+      <div className="section-rule">
+        <b>01 / The person</b>
+        <span />
+        <i>Not just the output</i>
+      </div>
+      <div className="statement">
+        <h2>
+          Good work is
+          <br />
+          <em>quietly</em>
+          <br />
+          considered.
+        </h2>
+        <div>
+          <p className="statement-copy">
+            I’m Charles, a full-stack developer from Makueni, Kenya. I build
+            practical web and mobile products that feel calm to use, load
+            quickly, and hold up in the real world.
+          </p>
+          <p className="small-copy">
+            My work sits between product thinking and engineering: understand
+            the problem, remove the noise, then make the useful thing feel
+            inevitable.
+          </p>
+          <Link className="text-link" href="/about">
+            Read the longer version →
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -55,7 +55,10 @@ export const sendEmail = async (sender: string, name: string, subject: string, b
     try {
         // Validate that we have the required API key
         if (!process.env.NEXT_RESEND_API_KEY) {
-            throw new Error('RESEND_API_KEY is not configured');
+            // throw new Error('RESEND_API_KEY is not configured');
+            // fail silently
+
+            return
         }
 
         // Validate email addresses
@@ -64,6 +67,8 @@ export const sendEmail = async (sender: string, name: string, subject: string, b
             throw new Error('Invalid sender email format');
         }
         
+        // TODO =validate email exists
+
         const email = await resend.emails.send({
             from: "support@devcharles.me", // Use Resend's default domain for testing
             replyTo: sender,

@@ -1,2 +1,29 @@
-import { skillCategories } from "@/lib/hardcoded"
-export default function SkillsSection(){return <section className="editorial-section" id="skills"><div className="section-rule"><b>04 / The tools</b><span/><i>Familiar instruments</i></div><div className="statement"><h2>A small<br/><em>sharp</em><br/>toolkit.</h2><div>{skillCategories.map(c=><div key={c.id} className="service-row"><b>{c.name}</b><p>{c.skills.map(s=>s.name).join(" · ")}</p></div>)}</div></div></section>}
+import { skillCategories } from "@/lib/hardcoded";
+export default function SkillsSection() {
+  return (
+    <section className="editorial-section" id="skills">
+      <div className="section-rule">
+        <b>04 / The tools</b>
+        <span />
+        <i>Familiar instruments</i>
+      </div>
+      <div className="statement">
+        <h2>
+          A small
+          <br />
+          <em>sharp</em>
+          <br />
+          toolkit.
+        </h2>
+        <div>
+          {skillCategories.map((c) => (
+            <div key={c.id} className="service-row">
+              <b>{c.name}</b>
+              <p>{c.skills.map((s) => s.name).join(" · ")}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

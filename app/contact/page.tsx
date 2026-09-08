@@ -1,8 +1,140 @@
-"use client"
-import { useState } from "react"
-import Animated from "@/components/Animated"
-import { sendEmail } from "@/lib/mailer"
-import { personalLinks } from "@/lib/hardcoded"
-import { ArrowUpRight, Check, Github, Linkedin, Twitter } from "lucide-react"
+"use client";
+import { useState } from "react";
+import Animated from "@/components/Animated";
+import { sendEmail } from "@/lib/mailer";
+import { personalLinks } from "@/lib/hardcoded";
+import { ArrowUpRight, Check, Github, Linkedin, Twitter } from "lucide-react";
 
-export default function ContactPage() { const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" }); const [status, setStatus] = useState<"idle" | "success" | "error">("idle"); const [busy, setBusy] = useState(false); const update = (key: keyof typeof form, value: string) => setForm({ ...form, [key]: value }); const submit = async (event: React.FormEvent) => { event.preventDefault(); setBusy(true); try { const ok = await sendEmail(form.email, form.name, form.subject, form.message); setStatus(ok ? "success" : "error"); if (ok) setForm({ name: "", email: "", subject: "", message: "" }) } catch { setStatus("error") } finally { setBusy(false) } }; return <main className="archive-page"><section className="archive-intro wrap"><Animated><p className="eyebrow">Open line / Makueni, Kenya</p><h1>Let&apos;s make<br /><em>something useful.</em></h1><p className="intro-copy">Have a product in mind, a messy system that needs untangling, or just a good question? Send a note. I&apos;ll get back to you as soon as I can.</p></Animated></section><section className="wrap contact-layout"><Animated><form className="contact-form" onSubmit={submit}><label>Name<input required value={form.name} onChange={(e) => update("name", e.target.value)} placeholder="Your name" /></label><label>Email<input required type="email" value={form.email} onChange={(e) => update("email", e.target.value)} placeholder="you@example.com" /></label><label>What are we working on?<input required value={form.subject} onChange={(e) => update("subject", e.target.value)} placeholder="A short subject" /></label><label>Tell me a little more<textarea required rows={6} value={form.message} onChange={(e) => update("message", e.target.value)} placeholder="The context, the challenge, the dream..." /></label><button disabled={busy} className="submit-button" type="submit">{busy ? "Sending..." : "Send the note"}<ArrowUpRight size={18} /></button>{status === "success" && <p className="form-status"><Check size={16} /> Message sent. I&apos;ll be in touch.</p>}{status === "error" && <p className="form-status error">Something went wrong. Please try again.</p>}</form></Animated><Animated delay={.15}><aside className="contact-aside"><p className="eyebrow">Other ways in</p><a href="mailto:contact@devcharles.me">contact@devcharles.me <ArrowUpRight size={16} /></a><a href="https://wa.me/+254797810469">WhatsApp <ArrowUpRight size={16} /></a><p className="aside-note">Usually online during East Africa Time. Replies are human, not automated.</p><div className="social-links"><a href={personalLinks.github} aria-label="GitHub"><Github /></a><a href={personalLinks.linkedin} aria-label="LinkedIn"><Linkedin /></a><a href={personalLinks.twitter} aria-label="Twitter"><Twitter /></a></div></aside></Animated></section></main> }
+export default function ContactPage() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [busy, setBusy] = useState(false);
+  const update = (key: keyof typeof form, value: string) =>
+    setForm({ ...form, [key]: value });
+  const submit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setBusy(true);
+    try {
+      const ok = await sendEmail(
+        form.email,
+        form.name,
+        form.subject,
+        form.message,
+      );
+      setStatus(ok ? "success" : "error");
+      if (ok) setForm({ name: "", email: "", subject: "", message: "" });
+    } catch {
+      setStatus("error");
+    } finally {
+      setBusy(false);
+    }
+  };
+  return (
+    <main className="archive-page">
+      <section className="archive-intro wrap">
+        <Animated>
+          <p className="eyebrow">Open line / Makueni, Kenya</p>
+          <h1>
+            Let&apos;s make
+            <br />
+            <em>something useful.</em>
+          </h1>
+          <p className="intro-copy">
+            Have a product in mind, a messy system that needs untangling, or
+            just a good question? Send a note. I&apos;ll get back to you as soon
+            as I can.
+          </p>
+        </Animated>
+      </section>
+      <section className="wrap contact-layout">
+        <Animated>
+          <form className="contact-form" onSubmit={submit}>
+            <label>
+              Name
+              <input
+                required
+                value={form.name}
+                onChange={(e) => update("name", e.target.value)}
+                placeholder="Your name"
+              />
+            </label>
+            <label>
+              Email
+              <input
+                required
+                type="email"
+                value={form.email}
+                onChange={(e) => update("email", e.target.value)}
+                placeholder="you@example.com"
+              />
+            </label>
+            <label>
+              What are we working on?
+              <input
+                required
+                value={form.subject}
+                onChange={(e) => update("subject", e.target.value)}
+                placeholder="A short subject"
+              />
+            </label>
+            <label>
+              Tell me a little more
+              <textarea
+                required
+                rows={6}
+                value={form.message}
+                onChange={(e) => update("message", e.target.value)}
+                placeholder="The context, the challenge, the dream..."
+              />
+            </label>
+            <button disabled={busy} className="submit-button" type="submit">
+              {busy ? "Sending..." : "Send the note"}
+              <ArrowUpRight size={18} />
+            </button>
+            {status === "success" && (
+              <p className="form-status">
+                <Check size={16} /> Message sent. I&apos;ll be in touch.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="form-status error">
+                Something went wrong. Please try again.
+              </p>
+            )}
+          </form>
+        </Animated>
+        <Animated delay={0.15}>
+          <aside className="contact-aside">
+            <p className="eyebrow">Other ways in</p>
+            <a href="mailto:charleskahuho78@gmail.com">
+              charleskahuho78@gmail.com <ArrowUpRight size={16} />
+            </a>
+            <a href="https://wa.me/+254797810469">
+              WhatsApp <ArrowUpRight size={16} />
+            </a>
+            <p className="aside-note">
+              Usually online during East Africa Time. Replies are human, not
+              automated.
+            </p>
+            <div className="social-links">
+              <a href={personalLinks.github} aria-label="GitHub">
+                <Github />
+              </a>
+              <a href={personalLinks.linkedin} aria-label="LinkedIn">
+                <Linkedin />
+              </a>
+              <a href={personalLinks.twitter} aria-label="Twitter">
+                <Twitter />
+              </a>
+            </div>
+          </aside>
+        </Animated>
+      </section>
+    </main>
+  );
+}

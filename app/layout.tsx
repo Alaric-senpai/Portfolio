@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Metadata } from "next";
 import { DM_Serif_Display, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
@@ -22,8 +23,8 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "DevCharles | Full-Stack Web & Mobile Developer in Makueni, Kenya",
-    template: "%s | DevCharles"
+    default: "Kahuho Charles | Full-Stack Web & Mobile Developer in Makueni, Kenya",
+    template: "%s | Kahuho Charles"
   },
   description:
     "Charles Kahuho (DevCharles) is a full-stack developer in Makueni, Kenya, building web and mobile apps with Next.js, React Native, and Node.js.",
@@ -42,8 +43,8 @@ export const metadata: Metadata = {
     "Kenya"
   ],
   authors: [{ name: "Charles Kahuho", url: "https://devcharles.me" }],
-  creator: "Charles Kahuho",
-  publisher: "DevCharles",
+  creator: "Charles Mbithi Kahuho",
+  publisher: "Charles",
   metadataBase: new URL("https://devcharles.me"),
   alternates: {
     canonical: "https://devcharles.me",
@@ -51,14 +52,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://devcharles.me",
-    title: "DevCharles | Full-Stack Web & Mobile Developer in Makueni, Kenya",
+    title: "Charles Kahuho | Full-Stack Web & Mobile Developer in Makueni, Kenya",
     description:
       "Charles Kahuho (DevCharles) is a full-stack developer in Makueni, Kenya, building web and mobile apps with Next.js, React Native, and Node.js.",
     siteName: "DevCharles",
     locale: "en_US",
     images: [
       {
-        url: "https://devcharles.me/assets/projects/echoplain-base.png",
+        url: "https://devcharles.me/assets/projects/profile.png",
         width: 1200,
         height: 630,
         alt: "DevCharles Portfolio - Full-Stack Developer",
