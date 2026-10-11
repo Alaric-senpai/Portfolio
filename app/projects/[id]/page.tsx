@@ -19,16 +19,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     return {
-        title: `${project.title} | DevCharles Portfolio`,
+        title: `${project.title} | Charles Kahuho Portfolio`,
         description: project.description,
         keywords: [...project.tags, project.category, 'portfolio', 'web development', 'software engineering'].join(', '),
-        authors: [{ name: 'Charles Kahuho', url: 'https://devcharles.me' }],
+        authors: [{ name: 'Charles Kahuho', url: 'https://thecharles.tech' }],
         creator: 'Charles Kahuho',
         openGraph: {
             title: project.title,
             description: project.description,
             type: 'website',
-            url: `https://devcharles.me/projects/${project.id}`,
+            url: `https://thecharles.tech/projects/${project.id}`,
             images: [
                 {
                     url: project.image,
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
                     alt: project.title,
                 },
             ],
-            siteName: 'DevCharles Portfolio',
+            siteName: 'Charles Kahuho Portfolio',
         },
         twitter: {
             card: 'summary_large_image',
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             creator: '@devcharles',
         },
         alternates: {
-            canonical: `https://devcharles.me/projects/${project.id}`,
+            canonical: `https://thecharles.tech/projects/${project.id}`,
         },
     }
 }
@@ -79,7 +79,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         author: {
             '@type': 'Person',
             name: 'Charles Kahuho',
-            url: 'https://devcharles.me',
+            url: 'https://thecharles.tech',
         },
         dateCreated: '2024-01-01', // You can add actual dates to your project data
         keywords: project.tags.join(', '),

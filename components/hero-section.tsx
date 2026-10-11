@@ -1,40 +1,20 @@
-import Animated from "./Animated"
-import Link from 'next/link'
+import Link from "next/link";
+import Hero3D from "./hero-3d";
+
 export default function HeroSection() {
   return (
-    <section className="masthead" id="top">
-      <div className="mast-meta">
-        <span>DevCharles / 2026</span>
-        <span>Makueni, Kenya</span>
+    <section className="new-hero" id="top">
+      <div className="new-hero-top"><span>CK / 01—06</span><span>Independent digital maker</span></div>
+      <div className="new-hero-grid">
+        <div className="new-hero-copy">
+          <p className="eyebrow">Charles Kahuho · Nairobi / Makueni</p>
+          <h1>Ideas<br /><span>in motion.</span></h1>
+          <p className="hero-lede">I design and engineer expressive digital products where sharp code meets playful worlds.</p>
+          <div className="hero-actions"><Link href="/projects" className="hero-button">Explore the work <span>↗</span></Link><Link href="/contact" className="hero-text-link">Let&apos;s make something</Link></div>
+        </div>
+        <Hero3D />
       </div>
-      <Animated>
-        <h1 className="mast-title">
-          I make
-          <br />
-          <em>useful</em> things
-          <br />
-          for the web.
-        </h1>
-        <p className="mast-intro">
-          Charles Kahuho is a full-stack developer building clear, capable
-          digital products for people with something worth making.
-        </p>
-      </Animated>
-      <div className="  flex items-end flex-col justify-items-end  my-7">
-       <Link
-        href="/assets/kahuho_charles_resume.pdf"
-        target="_blank"
-        className="bg-primary text-white p-4 border-2 border-transparent hover:border-white"
-      >
-        See Resume
-      </Link>
-        
-      </div>
-      <div className="mast-foot">
-        <span>Selected work ↓</span>
-        <span>Available for thoughtful collaborations</span>
-      </div>
-
+      <div className="new-hero-bottom"><span>Scroll to wander ↓</span><span>Available for select collaborations <i /></span></div>
     </section>
   );
 }

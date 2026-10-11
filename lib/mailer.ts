@@ -46,7 +46,7 @@ export const sendEmail = async (sender: string, name: string, subject: string, b
             </div>
             
             <div style="background: #333; color: #ccc; padding: 15px; border-radius: 0 0 8px 8px; text-align: center; font-size: 12px;">
-                <p style="margin: 0;">This message was sent from your portfolio contact form at devcharles.me</p>
+                <p style="margin: 0;">This message was sent from your portfolio contact form at thecharles.tech</p>
                 <p style="margin: 5px 0 0 0;">Received on ${new Date().toLocaleString()}</p>
             </div>
         </div>
@@ -70,7 +70,7 @@ export const sendEmail = async (sender: string, name: string, subject: string, b
         // TODO =validate email exists
 
         const email = await resend.emails.send({
-            from: "support@devcharles.me", // Use Resend's default domain for testing
+            from: "support@thecharles.tech", // Use Resend's default domain for testing
             replyTo: sender,
             to: 'charleskahuho78@gmail.com',
             subject: `Portfolio Contact: ${subject}`,

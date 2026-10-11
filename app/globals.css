@@ -2,42 +2,43 @@
 @plugin "tailwindcss-animate";
 
 :root {
-  --background: #e9e2d4;
-  --foreground: #1d2521;
-  --card: #f7f3eb;
-  --primary: #d94f35;
-  --primary-foreground: #f7f3eb;
-  --secondary: #c8d8d1;
-  --secondary-foreground: #1d2521;
-  --muted: #d8d0c2;
-  --muted-foreground: #667068;
-  --accent: #e7c84b;
-  --accent-foreground: #1d2521;
-  --border: #a9a397;
-  --input: #a9a397;
-  --ring: #d94f35;
-  --radius: 0rem;
+  --background: #11110f;
+  --foreground: #f4f1ea;
+  --card: #1a1a17;
+  --primary: #d5ff41;
+  --primary-foreground: #11110f;
+  --secondary: #23241f;
+  --secondary-foreground: #f4f1ea;
+  --muted: #292a24;
+  --muted-foreground: #a8a99d;
+  --accent: #ff5d36;
+  --accent-foreground: #f4f1ea;
+  --border: #3b3c34;
+  --input: #3b3c34;
+  --ring: #d5ff41;
+  --radius: 0.2rem;
 }
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --font-sans: var(--font-sans);
-  --font-body: var(--font-body);
-  --font-mono: var(--font-mono);
+
+@layer components {
+  .new-hero { min-height: calc(100vh - 74px); padding: 28px 5vw 22px; background: radial-gradient(circle at 72% 45%, #292a24 0, #11110f 42%); color: var(--foreground); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
+  .new-hero-top, .new-hero-bottom { display: flex; justify-content: space-between; gap: 20px; font: 10px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted-foreground); }
+  .new-hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; min-height: 66vh; gap: 3vw; }
+  .new-hero-copy { position: relative; z-index: 2; }
+  .new-hero h1 { font: 400 clamp(5rem, 13vw, 12rem)/.78 var(--font-sans); letter-spacing: -.08em; margin: 22px 0 35px; }
+  .new-hero h1 span { color: var(--primary); font-style: italic; }
+  .hero-lede { max-width: 380px; color: var(--muted-foreground); font-size: clamp(1rem, 1.5vw, 1.25rem); line-height: 1.5; }
+  .hero-actions { display: flex; align-items: center; gap: 25px; flex-wrap: wrap; margin-top: 35px; }
+  .hero-button { display: inline-flex; gap: 30px; align-items: center; padding: 15px 17px; background: var(--primary); color: var(--primary-foreground); font: 11px var(--font-mono); text-transform: uppercase; transition: transform .25s, background .25s; }
+  .hero-button:hover { transform: translateY(-4px) rotate(-1deg); background: var(--accent); }
+  .hero-text-link { font: 11px var(--font-mono); text-transform: uppercase; color: var(--muted-foreground); border-bottom: 1px solid var(--muted-foreground); padding-bottom: 5px; }
+  .hero-text-link:hover { color: var(--primary); border-color: var(--primary); }
+  .hero-canvas { height: min(58vw, 660px); min-height: 360px; position: relative; filter: saturate(1.15); }
+  .hero-canvas canvas { touch-action: none; }
+  .new-hero-bottom { border-top: 1px solid var(--border); padding-top: 15px; }
+  .new-hero-bottom i { display: inline-block; width: 7px; height: 7px; margin-left: 7px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 14px var(--primary); }
+  @media (max-width: 700px) { .new-hero { min-height: calc(100vh - 64px); padding: 20px 5vw; } .new-hero-grid { grid-template-columns: 1fr; min-height: auto; gap: 0; padding: 8vh 0 5vh; } .new-hero h1 { font-size: clamp(4.8rem, 22vw, 8rem); margin-bottom: 25px; } .hero-canvas { order: -1; height: 52vw; min-height: 240px; margin: -5vh -5vw -5vh; } .new-hero-top span:last-child { display: none; } .new-hero-bottom span:last-child { max-width: 125px; text-align: right; } }
 }
+
 
 @layer base {
   * {

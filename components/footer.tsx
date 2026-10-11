@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div>
-        <span>DevCharles / Independent developer</span>
+        <span>thecharles.tech / Independent maker</span>
         <p>
           Built in Makueni.
           <br />

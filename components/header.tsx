@@ -17,7 +17,7 @@ export default function Header() {
   return (
     <header className="archive-nav">
       <Link href="/" className="mark">
-        dev<b>charles</b>
+        the<b>charles</b>
       </Link>
       <nav className="nav-links">
         {items.map(([label, href]) => (

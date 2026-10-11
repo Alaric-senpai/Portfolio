@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: "/",
             disallow: "/private/", // Example: Disallow private routes if any
         },
-        sitemap: "https://devcharles.me/sitemap.xml",
+        sitemap: "https://thecharles.tech/sitemap.xml",
     };
 }

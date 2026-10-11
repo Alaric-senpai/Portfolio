@@ -5,7 +5,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     const projs = projects.map((p) => {
         return {
-            url: `https://devcharles.me/projects/${p.id}`,
+            url: `https://thecharles.tech/projects/${p.id}`,
             priority: 1
 
         }
@@ -13,31 +13,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     return [
         {
-            url: 'https://devcharles.me',
+            url: 'https://thecharles.tech',
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 1
         },
         {
-            url: 'https://devcharles.me/about',
+            url: 'https://thecharles.tech/about',
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.8
         },
         {
-            url: 'https://devcharles.me/projects',
+            url: 'https://thecharles.tech/projects',
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.9
         },
         {
-            url: 'https://devcharles.me/skills',
+            url: 'https://thecharles.tech/skills',
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.8
         },
         {
-            url: 'https://devcharles.me/contact',
+            url: 'https://thecharles.tech/contact',
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 0.7

@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     template: "%s | Kahuho Charles"
   },
   description:
-    "Charles Kahuho (DevCharles) is a full-stack developer in Makueni, Kenya, building web and mobile apps with Next.js, React Native, and Node.js.",
+    "Charles Kahuho (Charles Kahuho) is a full-stack developer in Makueni, Kenya, building web and mobile apps with Next.js, React Native, and Node.js.",
   keywords: [
-    "DevCharles",
+    "Charles Kahuho",
     "Charles Kahuho",
     "web developer",
     "mobile developer",
@@ -42,27 +42,27 @@ export const metadata: Metadata = {
     "developer portfolio Makueni",
     "Kenya"
   ],
-  authors: [{ name: "Charles Kahuho", url: "https://devcharles.me" }],
+  authors: [{ name: "Charles Kahuho", url: "https://thecharles.tech" }],
   creator: "Charles Mbithi Kahuho",
   publisher: "Charles",
-  metadataBase: new URL("https://devcharles.me"),
+  metadataBase: new URL("https://thecharles.tech"),
   alternates: {
-    canonical: "https://devcharles.me",
+    canonical: "https://thecharles.tech",
   },
   openGraph: {
     type: "website",
-    url: "https://devcharles.me",
+    url: "https://thecharles.tech",
     title: "Charles Kahuho | Full-Stack Web & Mobile Developer in Makueni, Kenya",
     description:
-      "Charles Kahuho (DevCharles) is a full-stack developer in Makueni, Kenya, building web and mobile apps with Next.js, React Native, and Node.js.",
-    siteName: "DevCharles",
+      "Charles Kahuho (Charles Kahuho) is a full-stack developer in Makueni, Kenya, building web and mobile apps with Next.js, React Native, and Node.js.",
+    siteName: "Charles Kahuho",
     locale: "en_US",
     images: [
       {
-        url: "https://devcharles.me/assets/projects/profile.png",
+        url: "https://thecharles.tech/assets/projects/profile.png",
         width: 1200,
         height: 630,
-        alt: "DevCharles Portfolio - Full-Stack Developer",
+        alt: "Charles Kahuho Portfolio - Full-Stack Developer",
       },
     ],
   },
@@ -70,10 +70,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     // site: "@devcharles", // if you have a Twitter handle
     // creator: "@devcharles",
-    title: "DevCharles | Full-Stack Web & Mobile Developer in Makueni, Kenya",
+    title: "Charles Kahuho | Full-Stack Web & Mobile Developer in Makueni, Kenya",
     description:
-      "Charles Kahuho (DevCharles) is a full-stack developer in Makueni, Kenya, building web and mobile apps with Next.js, React Native, and Node.js.",
-    images: ["https://devcharles.me/assets/projects/echoplain-base.png"],
+      "Charles Kahuho (Charles Kahuho) is a full-stack developer in Makueni, Kenya, building web and mobile apps with Next.js, React Native, and Node.js.",
+    images: ["https://thecharles.tech/assets/projects/echoplain-base.png"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -100,7 +100,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Charles Kahuho",
-              url: "https://devcharles.me",
+              url: "https://thecharles.tech",
               jobTitle: "Full-Stack Developer",
               address: {
                 "@type": "PostalAddress",
