@@ -21,18 +21,18 @@ function CharacterRig() {
       <Float speed={1.4} rotationIntensity={0.08} floatIntensity={0.2}>
         <mesh position={[0, -1.35, 0]} rotation={[0, 0, 0.08]}>
           <capsuleGeometry args={[0.7, 1.2, 8, 24]} />
-          <meshToonMaterial color="#f05a42" />
+          <meshToonMaterial color="#ff6b4a" />
         </mesh>
         <RoundedBox args={[1.65, 0.28, 0.45]} radius={0.12} position={[0, -2.02, 0.15]}>
           <meshToonMaterial color="#1b3cff" />
         </RoundedBox>
         <mesh position={[-0.92, -1.28, 0]} rotation={[0, 0, -0.45]}>
           <capsuleGeometry args={[0.17, 0.75, 6, 12]} />
-          <meshToonMaterial color="#f05a42" />
+          <meshToonMaterial color="#ff6b4a" />
         </mesh>
         <mesh position={[0.92, -1.28, 0]} rotation={[0, 0, 0.45]}>
           <capsuleGeometry args={[0.17, 0.75, 6, 12]} />
-          <meshToonMaterial color="#f05a42" />
+          <meshToonMaterial color="#ff6b4a" />
         </mesh>
         <Sphere args={[1.05, 32, 20]} position={[0, 0.35, 0]}>
           <meshToonMaterial color="#ffd9ad" />
